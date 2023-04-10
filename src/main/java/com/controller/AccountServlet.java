@@ -64,7 +64,8 @@ public class AccountServlet extends HttpServlet {
 						//System.out.println("登录成功");	
 						HttpSession session = request.getSession();
 						session.setAttribute("Admin", AdminDto.getAdmin());
-						response.sendRedirect("cet-index.jsp");
+						response.sendRedirect("forward-to-index.jsp");
+						
 						break;
 				}
 			break;

@@ -29,4 +29,14 @@
     <servlet-name>AccountServlet</servlet-name>
     <url-pattern>/AccountServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StuBasicInfoServlet</display-name>
+    <servlet-name>StuBasicInfoServlet</servlet-name>
+    <servlet-class>com.controller.StuBasicInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StuBasicInfoServlet</servlet-name>
+    <url-pattern>/StuBasicInfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -5,7 +5,15 @@ public class StuBasicInfo {
 	private String stu_ID_type;
 	private String stu_gender;
 	private String stu_name;
-	private String stu_subject;
+	private Integer stu_subject;
+	
+	public StuBasicInfo(String stu_ID_card,String stu_ID_type,String stu_gender,String stu_name,Integer stu_subject) {
+		this.stu_ID_card = stu_ID_card;
+		this.stu_ID_type = stu_ID_type;
+		this.stu_gender = stu_gender;
+		this.stu_name = stu_name;
+		this.stu_subject = stu_subject;
+	}
 	
 	public String getStu_ID_card() {
 		return stu_ID_card;
@@ -31,10 +39,10 @@ public class StuBasicInfo {
 	public void setStu_name(String stu_name) {
 		this.stu_name = stu_name;
 	}
-	public String getStu_subject() {
+	public Integer getStu_subject() {
 		return stu_subject;
 	}
-	public void setStu_subject(String stu_subject) {
+	public void setStu_subject(Integer stu_subject) {
 		this.stu_subject = stu_subject;
 	}
 	

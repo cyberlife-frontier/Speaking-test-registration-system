@@ -102,7 +102,7 @@
                     <label class="input-placeholder" id="nickname-tips" for="nickname" data-bind="visible: nickname().length == 0">用户名</label>
                     <div class="input-outer">
                         <!--data-bind="textInput: nickname, event: {blur:checkDirtyNickname,focus:onNicknameFocus}, css:{error: typeof nicknameStatus() == 'string'}"-->
-                        <input name="username" required type="text" id="nickname" class="nickname" maxlength="24" data-bind=" textInput: nickname, event: {blur:checkDirtyNickname,focus:onNicknameFocus}" tabindex="3">
+                        <input autocomplete="on" name="username" required type="text" id="nickname" class="nickname" maxlength="24" data-bind=" textInput: nickname, event: {blur:checkDirtyNickname,focus:onNicknameFocus}" tabindex="3">
                         <span style="color:red;font-size:13px;">${usernameError}</span>
                     </div>
                    
@@ -117,7 +117,7 @@
                     <div class="input-outer">
                         <div class="password-raw" data-bind="text: password, visible: show_password(), clickBubble: false"></div>
                         <!--data-bind="textInput: password, event: {blur:checkPassword,focus:onPasswordFocus}, css:{error:typeof passwordStatus() === 'string'}, hasFocus:passwordFocus,  visible: !show_password()"-->
-                        <input name="password" required type="password" id="password" class="password" maxlength="16" data-bind="textInput: password, event: {blur:checkPassword,focus:onPasswordFocus}, hasFocus:passwordFocus,  visible: !show_password()" tabindex="4">
+                        <input autocomplete="on" name="password" required type="password" id="password" class="password" maxlength="16" data-bind="textInput: password, event: {blur:checkPassword,focus:onPasswordFocus}, hasFocus:passwordFocus,  visible: !show_password()" tabindex="4">
                         <span style="color:red;font-size:13px;">${passwordError}</span>
                     </div>      
                 </div>
