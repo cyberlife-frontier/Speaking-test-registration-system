@@ -39,4 +39,14 @@
     <servlet-name>StuBasicInfoServlet</servlet-name>
     <url-pattern>/StuBasicInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExamInfo</display-name>
+    <servlet-name>ExamInfo</servlet-name>
+    <servlet-class>com.controller.ExamInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExamInfo</servlet-name>
+    <url-pattern>/ExamInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

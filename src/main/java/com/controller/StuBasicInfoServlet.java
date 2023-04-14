@@ -19,9 +19,9 @@ import com.entity.StuBasicInfo;
 public class StuBasicInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private StuBasicInfoService StuBasicInfoService = new StuBasicInfoServiceImpl();
-    List<StuBasicInfo> StuBasicInfo = this.StuBasicInfoService.StuBasicInfo();
-    
-    
+    StuBasicInfo StuBasicInfo = null;
+    String stu_name,stu_gender,stu_ID_type,stu_ID_card = null;
+    Integer stu_subject = null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,10 +46,52 @@ public class StuBasicInfoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		//System.out.println(StuBasicInfo.size());
+		request.setCharacterEncoding("UTF-8");
+		String method = request.getParameter("method");
+		switch(method) {
+		case "all":
+			List<StuBasicInfo> StuBasicInfo = this.StuBasicInfoService.StuBasicInfo();
+			request.setAttribute("StuBasicInfo",StuBasicInfo);
+			request.setAttribute("stu_count", StuBasicInfo.size());
+			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
+			break;
+		case "search":
+			String key = request.getParameter("key");
+			String value = request.getParameter("value");
+			List<StuBasicInfo> StuSearch = this.StuBasicInfoService.StuSearch(key, value);
+			request.setAttribute("StuBasicInfo", StuSearch);
+			request.setAttribute("stu_count", StuSearch.size());
+			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
+			break;
+		case "add":			
+			stu_name = request.getParameter("stu_name"); 
+			stu_gender = request.getParameter("stu_gender"); 
+			stu_ID_type = request.getParameter("stu_ID_type");
+			stu_ID_card = request.getParameter("stu_ID_card");
+			String temp = request.getParameter("stu_subject");
+			stu_subject = Integer.parseInt(temp);
+			
+			this.StuBasicInfoService.StuAdd(new StuBasicInfo(stu_ID_card,stu_ID_type,stu_gender,stu_name,stu_subject));
+			response.sendRedirect("StuBasicInfo?method=all");
+			break;
+		case "update":
+			 stu_name = request.getParameter("stu_name");
+			 stu_gender = request.getParameter("stu_gender"); 
+			 stu_ID_type = request.getParameter("stu_ID_type");
+			 stu_ID_card = request.getParameter("stu_ID_card");
+			 String temp2 = request.getParameter("stu_subject");
+			 stu_subject = Integer.parseInt(temp2);
+			 
+			 this.StuBasicInfoService.StuUpdate(new StuBasicInfo(stu_ID_card,stu_ID_type,stu_gender,stu_name,stu_subject));
+			 response.sendRedirect("StuBasicInfo?method=all");
+			break;
+		case "delete":
+			stu_ID_card = request.getParameter("stu_ID_card");
+			this.StuBasicInfoService.StuDelete(stu_ID_card);
+			response.sendRedirect("StuBasicInfo?method=all");
+			break;
+		}
 		
-		request.setAttribute("StuBasicInfo",StuBasicInfo);
-		request.setAttribute("stu_count", StuBasicInfo.size());
-		request.getRequestDispatcher("cet-index.jsp").forward(request, response);
 	}
 
 }
