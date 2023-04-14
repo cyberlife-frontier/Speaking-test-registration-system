@@ -1,52 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="5.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="5.0">
   <display-name>CET</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>fin_stu</display-name>
-    <servlet-name>fin_stu</servlet-name>
-    <servlet-class>com.servlet.fin_stu</servlet-class>
+    <display-name>ExamInfoServlet</display-name>
+    <servlet-name>ExamInfoServlet</servlet-name>
+    <servlet-class>com.controller.ExamInfoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>fin_stu</servlet-name>
-    <url-pattern>/fin_stu</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AccountServlet</display-name>
-    <servlet-name>AccountServlet</servlet-name>
-    <servlet-class>com.controller.AccountServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AccountServlet</servlet-name>
-    <url-pattern>/AccountServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>StuBasicInfoServlet</display-name>
-    <servlet-name>StuBasicInfoServlet</servlet-name>
-    <servlet-class>com.controller.StuBasicInfoServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StuBasicInfoServlet</servlet-name>
-    <url-pattern>/StuBasicInfoServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ExamInfo</display-name>
-    <servlet-name>ExamInfo</servlet-name>
-    <servlet-class>com.controller.ExamInfo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ExamInfo</servlet-name>
-    <url-pattern>/ExamInfo</url-pattern>
+    <servlet-name>ExamInfoServlet</servlet-name>
+    <url-pattern>/ExamInfoServlet</url-pattern>
   </servlet-mapping>
 </web-app>

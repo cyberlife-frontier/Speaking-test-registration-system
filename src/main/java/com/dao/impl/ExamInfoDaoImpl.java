@@ -13,7 +13,7 @@ public class ExamInfoDaoImpl implements ExamInfoDao {
 	//alter time
 	public Integer ExamTime(String beginning,String deadline) {
 		Connection connection = JDBCUtil.getDBconnection();
-		String sql = "update reg_time set beginning = ?,deadline = ? where marker = RegTime";
+		String sql = "update reg_time set beginning = ?,deadline = ? where marker = 'RegTime'";
 		PreparedStatement statement = null;
 		
 		Integer result = null;
@@ -21,7 +21,7 @@ public class ExamInfoDaoImpl implements ExamInfoDao {
 			statement = connection.prepareStatement(sql);  
 			statement.setString(1, beginning);
 			statement.setString(2, deadline);
-			
+			System.out.println(statement);
 			result = statement.executeUpdate();
 			
 			
