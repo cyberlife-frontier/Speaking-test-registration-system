@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.util.JDBCUtil" import="java.sql.*"%>
+<%-- <%@page import="com.util.JDBCUtil" import="java.sql.*"%> --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>

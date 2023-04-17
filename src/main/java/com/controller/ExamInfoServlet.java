@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import com.service.impl.ExamInfoServiceImpl;
 import com.service.ExamInfoService;
+import com.entity.ExamTime;
 
 @WebServlet("/ExamInfo")
 /**
@@ -48,8 +49,13 @@ public class ExamInfoServlet extends HttpServlet {
 			this.ExamInfoService.ExamTime(beginning, deadline);
 			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
 			break;
+		case "getTime":
+			ExamTime ExamTime = this.ExamInfoService.getTime();
+			request.setAttribute("ExamTime", ExamTime);
+			request.getRequestDispatcher("students-sign-up.jsp").forward(request, response);
+			break;
 		
-		
+			
 		}
 		
 		

@@ -19,4 +19,14 @@
     <servlet-name>ExamInfoServlet</servlet-name>
     <url-pattern>/ExamInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StuRegServlet</display-name>
+    <servlet-name>StuRegServlet</servlet-name>
+    <servlet-class>com.controller.StuRegServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StuRegServlet</servlet-name>
+    <url-pattern>/StuRegServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
