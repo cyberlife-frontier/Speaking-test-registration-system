@@ -4,8 +4,10 @@ if(iden == 2){
     $('#cet6_checkbox').removeAttr('disabled');
 };
 
-function check(){
 var count = 0;
+
+function check(){
+
 var arr=document.getElementsByName("subject");
     //console.log(arr);
 	//var checkList = [];
@@ -51,14 +53,20 @@ var arr=document.getElementsByName("subject");
     };
 
     function toSaveAndContinue() {
-
+		
         if (!$('#chkAssure').is(':checked')) {
             $.messager.alert('提示', '请先勾选“我已检查并确认学籍与资格信息正确”！', 'warning');
             return;
-        }else {
-             confirmSaveAndContinue();
-        };
-
+        }
+        
+         check();
+         
+         if(count == 0){
+         $.messager.alert('提示', '您还未选择报考科目”！', 'warning')
+         return;
+         }
+         
+         confirmSaveAndContinue();
     };
 
     function confirmSaveAndContinue() {
@@ -67,11 +75,8 @@ var arr=document.getElementsByName("subject");
                 $('#btnAgree').removeAttr('onclick');
                 $('#btnDisagree').removeAttr('onclick');
                 $.messager.alert('提示', '报名成功！', 'info');
-                check();
-                 setTimeout(function () {
-                    $("#zcForm").attr('action', 'StudentReg?method=choosesub');
-                    $("#zcForm").submit();
-                    }, 100);
+                
+                 setTimeout("Refresh()",100);
             }
         });
     }

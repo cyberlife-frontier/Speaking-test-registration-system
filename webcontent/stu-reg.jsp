@@ -159,7 +159,7 @@
                             <div id="divAgree" style="display:none;">
                                 <a id="btnAgree" class="zc_button" style="text-decoration:none;" onclick="toSaveAndContinue()">保存并继续</a>
                             </div>
-                            <span id="spanAgree" class="zc_button">请勾选确认</span>
+                            <span id="spanAgree" class="zc_button" onclick="toSaveAndContinue()">请勾选确认</span>
                         </td>
                     </tr>
                 </table>

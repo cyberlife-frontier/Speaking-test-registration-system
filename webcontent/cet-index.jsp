@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- <%@page import="com.util.JDBCUtil" import="java.sql.*"%> --%>
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<!-- 菜单栏 -->
+<!-- menu-bar -->
 <div class="menu-bar">
   <h1 class="logo">大学生四六级口语考试报名系统<span>系统</span></h1>
   <ul>
@@ -34,8 +34,8 @@
     <li><a href="#">学生信息<i class="fas fa-caret-down"></i></a>
       <div class="dropdown-menu">
         <ul>
-          <li><a href="#">资质信息</a></li>
-          <li><a href="#">报名信息</a></li>
+          <li><a href="javascript:void(0)">资质信息</a></li>
+          <li><a href="cet-reg-info.jsp">报名信息</a></li>
         </ul>
       </div>
     </li>
