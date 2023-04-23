@@ -2,9 +2,9 @@ package com.dao.impl;
 
 import java.sql.*;
 import com.entity.StuBasicInfo;
+import com.entity.StuReg;
 import com.util.JDBCUtil;
 import com.dao.StuRegDao;
-
 public class StuRegDaoImpl implements StuRegDao{
 
 	@Override
@@ -56,6 +56,36 @@ public class StuRegDaoImpl implements StuRegDao{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public StuReg queryReg(String stu_ID_card) {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = " select stu_reg.stu_ID_card,stu_basic_info.stu_name,stu_reg.reg_subject,stu_basic_info.stu_subject "
+				+ "from stu_basic_info,stu_reg "
+				+ "where stu_reg.stu_ID_card=stu_basic_info.stu_ID_card && stu_reg.stu_ID_card= "+"'"+stu_ID_card+"'";
+		PreparedStatement statement = null;
+		ResultSet resultset =null;
+		StuReg StuReg = null;
+		try {
+			statement = connection.prepareStatement(sql);  
+			resultset = statement.executeQuery();
+			if(resultset.next()) {
+				stu_ID_card = resultset.getString(1);
+				String stu_name = resultset.getString(2);
+				Integer reg_subject = resultset.getInt(3);
+				Integer stu_subject = resultset.getInt(4);
+				StuReg =new StuReg(stu_ID_card,stu_name,reg_subject,stu_subject);
+				//return new StuBasicInfo(stu_ID_card,stu_ID_type,stu_gender,stu_name,stu_subject);
+			}
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, resultset);
+		}
+		
+		return StuReg;
 	}
 
 }

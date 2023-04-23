@@ -1,14 +1,29 @@
+var count = 0;
 function essential(){
 var iden = document.getElementById("checkbox_flag").value;
-//console.log(iden);
+var iden2 = document.getElementById("checkbox_flag2").value;
+var arr = document.getElementsByClassName("zc_a_checkbox");
+/*console.log(arr)
+console.log(iden)
+console.log(iden2)*/
 if(iden == 2){
     $('#cet6_checkbox').removeAttr('disabled');
-};
 }
-var count = 0;
+switch (iden2){
+	case "3":
+		arr[0].checked = true;
+		arr[1].checked = true;
+		break;
+	case "2":
+		arr[1].checked = true;
+		break;
+	case "1":
+		arr[0].checked =true;
+		break;
+}
+}
 
 function check(){
-
 var arr=document.getElementsByName("subject");
     //console.log(arr);
 	//var checkList = [];
@@ -17,12 +32,14 @@ var arr=document.getElementsByName("subject");
 			count = count +  parseInt(arr[i].value) ;
 		}
 	}
-	//alert(count);
+
     $("#reg_subject").attr('value', count);
+
 };
 
-    $(function () {
 
+    $(function () {
+        $("#imgPhotoShow").attr('src', 'images/AI.png' );
         if ($('#chkAssure').is(':checked')) {
             $('#spanAgree').hide();
             $('#divAgree').show();
@@ -48,26 +65,24 @@ var arr=document.getElementsByName("subject");
     function toIndex() {
         $.messager.confirm('提示', '返回首页？', function (r) {
             if (r) {
-                location.href = 'students-sign-up.html';
+                location.href = 'students-sign-up.jsp';
             }
         });
     };
 
     function toSaveAndContinue() {
-		
+		check();
         if (!$('#chkAssure').is(':checked')) {
             $.messager.alert('提示', '请先勾选“我已检查并确认学籍与资格信息正确”！', 'warning');
             return;
         }
-        
-         check();
-         
+        //alert(count)
          if(count == 0){
          $.messager.alert('提示', '您还未选择报考科目”！', 'warning')
          return;
          }
-         
-         confirmSaveAndContinue();
+             confirmSaveAndContinue();
+
     };
 
     function confirmSaveAndContinue() {
@@ -75,15 +90,14 @@ var arr=document.getElementsByName("subject");
              if (r) {
                 $('#btnAgree').removeAttr('onclick');
                 $('#btnDisagree').removeAttr('onclick');
-                $.messager.alert('提示', '报名成功！', 'info');
-                
-                 setTimeout("Refresh()",100);
+                $.messager.alert('提示', '保存成功！', 'info');
+                 setTimeout("Refresh()", 100);
             }
         });
     }
 
     function Refresh() {
         $("#zcForm").attr('target', '_self');
-        $("#zcForm").attr('action', 'StudentReg?method=choosesub');
+        $("#zcForm").attr('action', '');
         $("#zcForm").submit();
     }

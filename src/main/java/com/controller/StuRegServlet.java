@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.dto.StuBasicInfoDto;
+import com.dto.StuRegDto;
 import com.service.StuRegService;
 import com.service.impl.StuRegServiceImpl;
 @WebServlet("/StudentReg")
@@ -75,7 +76,23 @@ public class StuRegServlet extends HttpServlet {
 			//System.out.println(reg_subject);
 			response.sendRedirect("forward-to-stusignup.jsp");
 			break;
-		} //switch
+		case "queryReg":
+			stu_ID_card = request.getParameter("IDNumber");
+			//System.out.println(stu_ID_card);
+			StuRegDto StuRegDto = this.StuRegService.queryReg(stu_ID_card);
+			//System.out.println(StuRegDto);
+			switch(StuRegDto.getCode()) {
+			case -1:
+				request.setAttribute("IDCradError", "您目前可能未报名");
+				request.getRequestDispatcher("registration-info-query.jsp").forward(request,response);
+				break;
+			case 0:
+				request.setAttribute("StuReg", StuRegDto.getStuReg());
+				request.getRequestDispatcher("registration-info-confirm.jsp").forward(request,response);
+				break;
+			}
+			break;
+		} //outer switch
 		
 		
 	}

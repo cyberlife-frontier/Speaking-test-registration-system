@@ -6,10 +6,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 import com.service.impl.ExamInfoServiceImpl;
 import com.service.ExamInfoService;
 import com.entity.ExamTime;
+import com.entity.StuReg;
 
 @WebServlet("/ExamInfo")
 /**
@@ -54,7 +56,13 @@ public class ExamInfoServlet extends HttpServlet {
 			request.setAttribute("ExamTime", ExamTime);
 			request.getRequestDispatcher("students-sign-up.jsp").forward(request, response);
 			break;
-		
+		case "allReg":
+			List<StuReg> StuReg = this.ExamInfoService.StuReg();
+			//System.out.println(StuReg);
+			request.setAttribute("StuReg", StuReg);
+			request.setAttribute("reg_count", StuReg.size());
+			request.getRequestDispatcher("cet-reg-info.jsp").forward(request, response);
+			break;
 			
 		}
 		

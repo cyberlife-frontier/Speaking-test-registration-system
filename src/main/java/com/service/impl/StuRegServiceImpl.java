@@ -5,7 +5,8 @@ import com.service.StuRegService;
 import com.dao.StuRegDao;
 import com.dao.impl.StuRegDaoImpl;
 import com.entity.StuBasicInfo;
-
+import com.dto.StuRegDto;
+import com.entity.StuReg;
 public class StuRegServiceImpl implements StuRegService{
 	 private StuRegDao StuRegDao =new StuRegDaoImpl();
 	
@@ -30,6 +31,21 @@ public class StuRegServiceImpl implements StuRegService{
 		// TODO 自动生成的方法存根
 		Integer choose_subject = this.StuRegDao.choosesub(stu_ID_card, reg_subject);
 		if(choose_subject != 1)throw new RuntimeException("报名信息添加失败");
+	}
+
+	@Override
+	public StuRegDto queryReg(String stu_ID_card) {
+		// TODO 自动生成的方法存根
+		StuReg StuReg = this.StuRegDao.queryReg(stu_ID_card);
+		StuRegDto StuRegDto = new StuRegDto();
+		if(StuReg == null ) {
+			StuRegDto.setCode(-1);
+		}else {
+			StuRegDto.setCode(0);
+			StuRegDto.setStuReg(StuReg);
+		}
+
+		return StuRegDto;
 	}
 
 }

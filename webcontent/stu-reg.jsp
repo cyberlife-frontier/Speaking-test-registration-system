@@ -58,7 +58,7 @@
 
 </head>
 
-<body>
+<body onload="essential()">
 <div id="zc_box" class="">
     <div id="zc_logo" style="background: url(images/zc_logo.jpg) no-repeat ; ">
         <div id="zc_logo_xx">

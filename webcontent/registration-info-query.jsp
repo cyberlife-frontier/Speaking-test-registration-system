@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title> 资格信息查询</title>
+  <title> 报名信息查询</title>
   <link rel="icon" href="images/cet.ico" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -109,46 +109,41 @@
 
   <div id="zc_main" class="" style="height:auto;">
 
-    <div id="zc_title" class="cen"><h1>资格信息查询</h1></div>
+    <div id="zc_title" class="cen"><h1>报名信息查询</h1></div>
 
     <div id="zc_main_room">
-    <form id="zcForm" action="StudentReg?method=query" method="post" target="_self">
-      
-      <div class="form-group form-md-line-input">
+      <form id="zcForm" action='StudentReg?method=queryReg' method="post" target="_self">
+        <h4>&nbsp;</h4>
+
+        <!--证件号码-->
+        <div class="form-group form-md-line-input">
+          <input name="IDNumber" id="txtIDNumber" class="form-control placeholder" type="text"
+           placeholder="请输入证件号码" maxlength="18" autocomplete="off">
+          <label for="txtIDNumber"><span class="r">*</span>&nbsp;证件号码：</label>
+          <span class="help-block">学籍证件号码</span>
+        </div>
         
-      </div>
-
-      <!--证件号码-->
-      <div class="form-group form-md-line-input">
-        <input name="IDNumber" id="txtIDNumber" class="form-control placeholder" 
-        type="text" placeholder="请输入证件号码" maxlength="18" >
-        <label for="txtIDNumber"><span class="r">*</span>&nbsp;证件号码：</label>
-        <span class="help-block">学籍证件号码</span>
-      </div>
-
       <!--Error info-->
       <div class="form-group form-md-line-input">
        
         ${IDCradError}
       </div>
-
-      <!--查询-->
-      <div>
-        <table style="width:100%;line-height: 44px;border:0;cellspacing:0;cellpadding:0" >
-          <tr>
-            <td align="center" >
-              <button id="btnSearch" class="zc_button"  style="text-decoration: none;border:none;" type="submit"><span style="padding-right:30px;">查</span>询</button>
-            </td>
-          </tr>
-        </table>
-        <br />
-      </div>
-    </form>
+        
+        <!--查询-->
+        <div>
+          <table style="width:100%;line-height: 44px;border:0;cellspacing:0;cellpadding:0" >
+            <tr>
+              <td align="center" >
+                <button id="btnSearch" class="zc_button"  style="text-decoration: none;border:none;" type="submit"><span style="padding-right:30px;">查</span>询</button>
+              </td>
+            </tr>
+          </table>
+          <br />
+        </div>
+      </form>
 
     </div>
   </div>
-
-  
 
   <div id="zc_footer" class="">
     <img src="https://resource.neea.edu.cn/project/CET/images/zc_footer.jpg" width="953" height="59" alt="" />

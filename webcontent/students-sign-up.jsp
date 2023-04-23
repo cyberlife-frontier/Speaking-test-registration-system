@@ -103,7 +103,7 @@
                 <p class="">ENTRY</p>
             </a>
 
-            <a href="#" class="c_hei cet_banner02">
+            <a href="registration-info-query.jsp" class="c_hei cet_banner02">
                 <p class="f20">查询/修改报名信息</p>
                 <p class="">REGISTER / MODIFY USER</p>
             </a>

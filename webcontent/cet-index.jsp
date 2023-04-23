@@ -12,7 +12,11 @@
   <title>主页</title>
   
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   
 </head>
@@ -35,7 +39,7 @@
       <div class="dropdown-menu">
         <ul>
           <li><a href="javascript:void(0)">资质信息</a></li>
-          <li><a href="cet-reg-info.jsp">报名信息</a></li>
+          <li><a href="ExamInfo?method=allReg">报名信息</a></li>
         </ul>
       </div>
     </li>
@@ -65,12 +69,13 @@
 <!-- menu-bar -->
 <h1>&nbsp;</h1>
 
-<!--搜索学生信息  -->
+<!-- panel-custom -->
 <div class="panel-custom">
   <div class="panel-heading">
   <button type="button" class="button-search" data-toggle="modal" data-target="#IssueTimeModal">发布</button>
   </div>
   <div class="panel-body" >
+  <!--search students info  -->
     <form  role="form" class="form-inline" action="StuBasicInfo?method=search" method="post" >
       <div class="form-group">
         <label >条件：
@@ -94,20 +99,23 @@
                                               class="icon-search" aria-hidden="true">
 										</span>开始搜索
         </button>
+        <!--search students info  -->
       </div>
-      <!-- 添加按钮 -->
+      <!-- add button-->
       <div class="form-group " style="margin-left: 40px">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
 										<span style="margin-right: 5px" class="" aria-hidden="true">
 											<i class="fa fa-user-plus">添加学生信息</i>
 											</span>
         </button>
-      </div>
+       
+      </div> <!-- add button -->
     </form>
   </div>
 </div>
+<!-- panel-custom -->
 
-<!--添加  -->
+<!--add modal  -->
 <form method="post" action="StuBasicInfo?method=add" class="form-horizontal" style="margin-top: 0px;margin: 20px;" role="form"
       id="form_data">
   <div class="modal fade" id="addUserModal" tabindex="-1"
@@ -181,9 +189,9 @@
     </div>
   </div>
 </form>
-<!-- 添加 -->
+<!-- add modal -->
 
-<!-- 修改 -->
+<!-- alter modal -->
 <form method="post" action="StuBasicInfo?method=update" class="form-horizontal" style="margin-top: 0px" role="form"
       id="formdata" style="margin: 20px;">
   <div class="modal fade" id="updateUserModal" tabindex="-1"
@@ -254,7 +262,7 @@
     </div>
   </div>
 </form>
-<!--修改-->
+<!--alter modal-->
 
 <!--delete modal-->
 <form method="post" action="StuBasicInfo?method=delete"
@@ -273,7 +281,7 @@
           <form class="form-horizontal" role="form">
             <div class="form-group">
               <div class="col-sm-9">
-                <p style="font-size:20px"  class="col-sm-18 control-label" id="deleteLabel">删除信息</p>
+                <p style="font-size:17px"  class="col-sm-18 control-label" id="deleteLabel">删除信息</p>
                 <!-- <input type="hidden" class="form-control" id="tab"
                        name="tab" placeholder="" value="dor_admin"> -->
                 <input type="hidden" required id="id"
@@ -341,10 +349,11 @@
 <!--issue test time-->
 
 <h3>&nbsp;</h3>
-<!--获取学生信息-->
+
+<!--sum of students-->
 <h3 style=" color：blue; text-align:center" >共有学生${stu_count}人</h3>
 
-<!--学生信息-->	     
+<!--show students info-->	     
 <div class="container">
   <table>
     <thead>
@@ -397,7 +406,7 @@
     <!--表主体  -->
   </table>
 </div>
-<!--学生信息  -->
+<!--show students info  -->
 
 <!--the sequence of imported scripts cannot be changed -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>

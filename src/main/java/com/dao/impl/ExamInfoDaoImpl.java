@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.dao.ExamInfoDao;
 import com.util.JDBCUtil;
 import com.entity.ExamTime;
+import com.entity.StuReg;
 
 public class ExamInfoDaoImpl implements ExamInfoDao {
 	
@@ -60,6 +63,33 @@ public class ExamInfoDaoImpl implements ExamInfoDao {
 			JDBCUtil.closeDB(connection, statement, null);
 		}
 		return ExamTime;
+	}
+
+	@Override
+	public List<StuReg> StuReg() {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = "select stu_reg.stu_ID_card,stu_basic_info.stu_name,stu_reg.reg_subject,stu_basic_info.stu_subject"
+				+ " from stu_basic_info,stu_reg where stu_reg.stu_ID_card=stu_basic_info.stu_ID_card";
+		PreparedStatement statement = null;
+		ResultSet resultset =null;
+		List<StuReg> StuReg = new ArrayList<>();
+		try {
+			statement = connection.prepareStatement(sql);  
+			resultset = statement.executeQuery();
+			while(resultset.next()) {
+				String stu_ID_card = resultset.getString(1);
+				String stu_name = resultset.getString(2);
+				Integer reg_subject = resultset.getInt(3);
+				Integer stu_subject = resultset.getInt(4);
+				StuReg.add(new StuReg(stu_ID_card,stu_name,reg_subject,stu_subject));
+			}
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, resultset);
+		}
+		return StuReg;
 	}
 	
 }

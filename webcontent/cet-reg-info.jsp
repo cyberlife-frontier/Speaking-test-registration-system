@@ -11,7 +11,8 @@
   <title>主页</title>
   
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
 
 </head>
@@ -33,7 +34,7 @@
     <li><a href="#">学生信息<i class="fas fa-caret-down"></i></a>
       <div class="dropdown-menu">
         <ul>
-          <li><a href="cet-index.jsp">资质信息</a></li>
+          <li><a href="StuBasicInfo?method=all">资质信息</a></li>
           <li><a href="javascript:void(0)">报名信息</a></li>
         </ul>
       </div>
@@ -64,13 +65,215 @@
 <!-- menu-bar -->
 <h1>&nbsp;</h1>
 
+<!-- panel-custom -->
+<div class="panel-custom">
+  <div class="panel-heading">
+  
+  </div>
+  <div class="panel-body" >
+  <!--search students info  -->
+    <form  role="form" class="form-inline" action="" method="post" >
+      <div class="form-group">
+        <label >条件：
+          <select name="key" class="form-control">
+            <!-- <option value="stu_name">学生姓名</option>
+            <option value="stu_gender">性别</option> -->
+            <option value="stu_ID_type">证件号码</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label >值：
+          <input type="text" class="form-control" name="value" placeholder="关键字" maxlength="12" >
+        </label>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="button-search ">
+										<span style="margin-right: 5px"
+                                              class="icon-search" aria-hidden="true">
+										</span>开始搜索
+        </button>
+        <!--search students info  -->
+      </div>
+      <!-- add button-->
+      <!-- <div class="form-group " style="margin-left: 40px">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
+										<span style="margin-right: 5px" class="" aria-hidden="true">
+											<i class="fa fa-user-plus">添加学生信息</i>
+											</span>
+        </button>
+        
+      </div>add button -->
+    </form>
+  </div>
+</div>
+<!-- panel-custom -->
+
+<!-- alter modal -->
+<form method="post" action="cet-index.jsp" class="form-horizontal" style="margin-top: 0px" role="form"
+      id="alterFormData" style="margin: 20px;">
+  <div class="modal fade" id="updateUserModal" tabindex="-1"
+       role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">x</button>
+          <h4 class="modal-title" id="MineModalLabel">修改学生报名信息</h4>
+        </div>
+        <div class="modal-body">
+          
+		<form class="form-horizontal" role="form">
+	
+			
+			
+            <div class="form-group">
+              <label for="StuName" class="col-sm-3 control-label">姓名</label>
+              <div class="col-sm-9">
+               <input type="text" readonly class="form-control" id="StuName">
+                       
+              </div>
+            </div>
+	
+            <div class="form-group">
+              <label for="StuIdCard" class="col-sm-3 control-label">证件号码</label>
+              <div class="col-sm-9">
+                <input type="text" readonly required class="form-control" id="StuIdCard"
+                       name="stu_ID_card">
+              </div>
+            </div>
+	
+            <!-- <input type="text" id="StuSubject"> -->
+                       
+            <div class="form-group">
+              <label  class="col-sm-3 control-label">报考科目</label>
+              <div class="col-sm-9">
+                <input name="reg_subject"  id="reg_subject" type="hidden" value="" />
+                 <label>
+                      <input class="subject_checkbox" type="checkbox" value="1">英语四级口试
+                </label>
+                    &nbsp;&nbsp;
+                <label>
+                      <input class="subject_checkbox" id="cet6_checkbox" type="checkbox" value="2" disabled>英语六级口试
+              	</label>
+                
+                
+              </div>
+            </div>
+
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" onclick="check()">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--alter modal-->
+
+<!--delete modal-->
+<form method="post" action=""
+      class="form-horizontal" style="margin-top: 0px" role="form"
+      id="delete_form_data" style="margin: 20px;">
+  <div class="modal fade" id="delUserModal" tabindex="-1"
+       role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">×</button>
+          <h4 class="modal-title" id="DeleteModalLabel">删除学生报名信息</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-9">
+                <p style="font-size:17px"  class="col-sm-18 control-label" id="deleteLabel">删除信息</p>
+                <!-- <input type="hidden" class="form-control" id="tab"
+                       name="tab" placeholder="" value="dor_admin"> -->
+                <input type="hidden" required id="id"
+                      name="stu_ID_card" >
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-danger">删除</button>
+          <span id="tip"> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--delete modal-->
+
+<h3>&nbsp;</h3>
+
+<!--sum of students registration-->
+<h3 style=" color：blue; text-align:center" >共有学生${reg_count}人</h3>
+
+<!--show students registration info-->	     
+<div class="container">
+  <table>
+    <thead>
+    <!-- 表页眉 -->
+    <tr>
+      <th>学生姓名</th>
+      <th>证件号码</th>
+      <th>报考科目</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    <!-- 表主体 -->
+    
+    <c:forEach items="${StuReg }" var="sr">
+    <tr>
+      <td>${sr.stu_name }</td><!-- 姓名 -->
+      <td>${sr.stu_ID_card }</td><!-- 身份证 -->
+      <td>
+      <c:if test="${sr.reg_subject==1 }">英语四级口试</c:if>
+      <c:if test="${sr.reg_subject==2 }">英语六级口试</c:if>
+      <c:if test="${sr.reg_subject==3 }">英语四级口试;英语六级口试</c:if>
+      </td><!-- 资格科目 -->
+      <td><!-- operation -->
+      	 <button type="button" class="btn btn-default "
+                  data-stu_name="${sr.stu_name}"  
+                  data-stu_id_card="${sr.stu_ID_card}"
+                  data-reg_subject="${sr.reg_subject}"
+				  data-stu_subject="${sr.stu_subject }"
+				
+                  data-toggle="modal"
+                  data-target="#updateUserModal">
+        	<i class="fa fa-user-o">修改</i>
+      	</button>
+      <%-- <button type="button" class="btn btn-danger "
+                data-stu_id_card="${sr.stu_ID_card}" data-toggle="modal"
+                onclick="" data-target="#delUserModal">
+          <i class="fa fa-user-times">删除</i>
+        </button>  --%>
+      </td><!--operation  -->
+    </tr>
+    </c:forEach>
+    
+    </tbody>
+    <!--表主体  -->
+  </table>
+</div>
+<!--show students info  -->
+
 
 <!--the sequence of imported scripts cannot be changed -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="https://cdn.bootcss.com/moment.js/2.22.1/moment-with-locales.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script> -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/cetjs.js" ></script>
+<script src="js/cetreg.js" ></script>
 
 </body>
 </html>
