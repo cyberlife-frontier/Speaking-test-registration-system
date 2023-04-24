@@ -48,7 +48,7 @@ var arr=document.getElementsByName("subject");
     function toIndex() {
         $.messager.confirm('提示', '返回首页？', function (r) {
             if (r) {
-                location.href = 'students-sign-up.html';
+                location.href = 'forward-to-stusignup.jsp';
             }
         });
     };

@@ -7,5 +7,5 @@ public interface StuRegDao {
 	public StuBasicInfo query(String stu_ID_card);
 	public Integer choosesub(String stu_ID_card, Integer reg_subject);
 	public StuReg queryReg(String stu_ID_card);
-	
+	public Integer confirmReg(String stu_ID_card, Integer reg_subject);
 }

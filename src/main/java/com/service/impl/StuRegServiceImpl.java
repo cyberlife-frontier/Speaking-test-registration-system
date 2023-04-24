@@ -48,4 +48,11 @@ public class StuRegServiceImpl implements StuRegService{
 		return StuRegDto;
 	}
 
+	@Override
+	public void confirmReg(String stu_ID_card, Integer reg_subject) {
+		// TODO 自动生成的方法存根
+		Integer alter_subject = this.StuRegDao.confirmReg(stu_ID_card, reg_subject);
+		if(alter_subject != 1)throw new RuntimeException("报名信息更改失败");
+	}
+
 }

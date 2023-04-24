@@ -66,26 +66,30 @@
 <h1>&nbsp;</h1>
 
 <!-- panel-custom -->
-<div class="panel-custom">
+<div class="panel-custom" style="margin-left:29%;">
   <div class="panel-heading">
   
   </div>
   <div class="panel-body" >
   <!--search students info  -->
-    <form  role="form" class="form-inline" action="" method="post" >
+    <form  role="form" class="form-inline" action="ExamInfo?method=searchReg" method="post" >
       <div class="form-group">
         <label >条件：
-          <select name="key" class="form-control">
-            <!-- <option value="stu_name">学生姓名</option>
-            <option value="stu_gender">性别</option> -->
-            <option value="stu_ID_type">证件号码</option>
+          <select name="key" class="form-control" id="key-change"  onchange="csschange()">
+            <option value="stu_ID_card" selected>证件号码</option>
+            <option value="reg_subject">报考科目</option>
           </select>
         </label>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" >
         <label >值：
-          <input type="text" class="form-control" name="value" placeholder="关键字" maxlength="12" >
+          <input id="id-key" type="text" class="form-control" name="value" placeholder="关键字" maxlength="18" >
+          <select id="sub-key" class="form-control" style="display:none;">
+            <option value="1" >英语四级口试</option>
+            <option value="2" >英语六级口试</option>
+            <option value="3" >英语四级、六级口试</option>
+          </select>
         </label>
       </div>
 
@@ -112,7 +116,7 @@
 <!-- panel-custom -->
 
 <!-- alter modal -->
-<form method="post" action="cet-index.jsp" class="form-horizontal" style="margin-top: 0px" role="form"
+<form method="post" action="ExamInfo?method=alterReg" class="form-horizontal" style="margin-top: 0px" role="form"
       id="alterFormData" style="margin: 20px;">
   <div class="modal fade" id="updateUserModal" tabindex="-1"
        role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -127,8 +131,6 @@
           
 		<form class="form-horizontal" role="form">
 	
-			
-			
             <div class="form-group">
               <label for="StuName" class="col-sm-3 control-label">姓名</label>
               <div class="col-sm-9">
@@ -158,8 +160,7 @@
                 <label>
                       <input class="subject_checkbox" id="cet6_checkbox" type="checkbox" value="2" disabled>英语六级口试
               	</label>
-                
-                
+                 
               </div>
             </div>
 

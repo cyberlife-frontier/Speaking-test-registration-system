@@ -203,7 +203,7 @@
   </div>
 
   <form id="zcForm" action='' method="post" target="_self">
-    <input name="stu_ID_card" type="hidden" value="" />
+    <input name="stu_ID_card" type="hidden" value="${StuReg.stu_ID_card }" />
     <input name="reg_subject"  id="reg_subject" type="hidden" value="" />
   </form>
 

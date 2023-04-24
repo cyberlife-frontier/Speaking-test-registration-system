@@ -36,4 +36,19 @@ public class ExamInfoServiceImpl implements  ExamInfoService{
 		return this.ExamInfoDao.StuReg();
 	}
 
+	@Override
+	public void alterReg(String stu_ID_card, Integer reg_subject) {
+		// TODO 自动生成的方法存根
+		Integer alter_subject = this.ExamInfoDao.alterReg(stu_ID_card, reg_subject);
+		if(alter_subject != 1)throw new RuntimeException("报名信息更改失败");
+	}
+
+	@Override
+	public List<StuReg> searchReg(String key,String value) {
+		// TODO 自动生成的方法存根
+		if(value.equals("")) 
+			return this.ExamInfoDao.StuReg();
+		return this.ExamInfoDao.searchReg(key, value);
+	}
+
 }

@@ -65,7 +65,7 @@ var arr=document.getElementsByName("subject");
     function toIndex() {
         $.messager.confirm('提示', '返回首页？', function (r) {
             if (r) {
-                location.href = 'students-sign-up.jsp';
+                location.href = 'forward-to-stusignup.jsp';
             }
         });
     };
@@ -98,6 +98,6 @@ var arr=document.getElementsByName("subject");
 
     function Refresh() {
         $("#zcForm").attr('target', '_self');
-        $("#zcForm").attr('action', '');
+        $("#zcForm").attr('action', 'StudentReg?method=confirmReg');
         $("#zcForm").submit();
     }

@@ -88,4 +88,26 @@ public class StuRegDaoImpl implements StuRegDao{
 		return StuReg;
 	}
 
+	@Override
+	public Integer confirmReg(String stu_ID_card, Integer reg_subject) {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = "update stu_reg set reg_subject = ? where stu_ID_card = ?";
+		PreparedStatement statement = null;
+		//ResultSet resultset =null;
+		Integer result = null;
+		try {
+			statement = connection.prepareStatement(sql);  
+			statement.setInt(1, reg_subject);
+			statement.setString(2, stu_ID_card);
+			result = statement.executeUpdate();
+				
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, null);
+		}
+		return result;
+	}
+
 }

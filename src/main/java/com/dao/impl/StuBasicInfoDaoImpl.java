@@ -46,7 +46,24 @@ public class StuBasicInfoDaoImpl implements  StuBasicInfoDao {
 	public List<StuBasicInfo> StuSearch(String key, String value) {
 		// TODO 自动生成的方法存根
 		Connection connection = JDBCUtil.getDBconnection();
-		String sql = "select * from stu_basic_info where "+ key + " like '%"+ value +"%'" ;
+		String sql = null;
+		switch(key) {
+		case "stu_subject":
+		case "stu_gender":
+			sql = "select * from stu_basic_info where "+ key + " = '"+ value +"'" ;
+			break;
+		case "stu_name":
+		case "stu_ID_type":
+			sql = "select * from stu_basic_info where "+ key + " like '%"+ value +"%'" ;
+			break;
+		}
+		
+		/*if(key.equals("stu_subject")) {
+			sql = "select * from stu_basic_info where "+ key + " = '"+ value +"'" ;
+		}else {
+			sql = "select * from stu_basic_info where "+ key + " like '%"+ value +"%'" ;
+		}*/
+		
 		PreparedStatement statement = null;
 		ResultSet resultset =null;
 		List<StuBasicInfo> StuBasicInfo = new ArrayList<>();

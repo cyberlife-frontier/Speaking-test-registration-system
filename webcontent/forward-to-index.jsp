@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<!--  -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,9 +8,7 @@
 		</script>
 	</head>
 <body >
-	<form name="sbi" action="StuBasicInfo?method=all" method="post">
-		
-	</form>
+	<form name="sbi" action="StuBasicInfo?method=all" method="post"></form>
 
 </body>
 </html>

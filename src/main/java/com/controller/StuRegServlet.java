@@ -20,6 +20,7 @@ public class StuRegServlet extends HttpServlet {
     private StuRegService StuRegService =new StuRegServiceImpl();
     String stu_ID_card =null;
     String stu_subject = null;
+    Integer reg_subject = null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -71,7 +72,7 @@ public class StuRegServlet extends HttpServlet {
 			break;
 		case "choosesub":
 			//String temp = request.getParameter("reg_subject");
-			Integer reg_subject = Integer.parseInt(request.getParameter("reg_subject"));
+			reg_subject = Integer.parseInt(request.getParameter("reg_subject"));
 			this.StuRegService.choosesub(stu_ID_card, reg_subject);
 			//System.out.println(reg_subject);
 			response.sendRedirect("forward-to-stusignup.jsp");
@@ -91,6 +92,14 @@ public class StuRegServlet extends HttpServlet {
 				request.getRequestDispatcher("registration-info-confirm.jsp").forward(request,response);
 				break;
 			}
+			break;
+		case "confirmReg":
+			stu_ID_card = request.getParameter("stu_ID_card");
+			reg_subject = Integer.parseInt(request.getParameter("reg_subject"));
+			//System.out.println(stu_ID_card);
+			//System.out.println(reg_subject);
+			this.StuRegService.confirmReg(stu_ID_card, reg_subject);
+			response.sendRedirect("forward-to-stusignup.jsp");
 			break;
 		} //outer switch
 		

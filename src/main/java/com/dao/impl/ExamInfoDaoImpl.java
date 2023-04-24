@@ -91,5 +91,65 @@ public class ExamInfoDaoImpl implements ExamInfoDao {
 		}
 		return StuReg;
 	}
+
+	@Override
+	public Integer alterReg(String stu_ID_card, Integer reg_subject) {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = "update stu_reg set reg_subject = ? where stu_ID_card = ?";
+		PreparedStatement statement = null;
+		//ResultSet resultset =null;
+		Integer result = null;
+		try {
+			statement = connection.prepareStatement(sql);  
+			statement.setInt(1, reg_subject);
+			statement.setString(2, stu_ID_card);
+			result = statement.executeUpdate();
+				
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, null);
+		}
+		return result;
+	}
+
+	@Override
+	public List<StuReg> searchReg(String key, String value) {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = null;
+		switch(key) {
+		case "stu_ID_card":
+				sql = "select stu_reg.stu_ID_card,stu_basic_info.stu_name,stu_reg.reg_subject,stu_basic_info.stu_subject"
+				+ " from stu_basic_info,stu_reg where stu_reg.stu_ID_card=stu_basic_info.stu_ID_card "
+				+ "&& stu_reg.stu_ID_card = "+"'"+value+"'";
+		break;
+		case "reg_subject":
+				sql = "select stu_reg.stu_ID_card,stu_basic_info.stu_name,stu_reg.reg_subject,stu_basic_info.stu_subject"
+					+ " from stu_basic_info,stu_reg where stu_reg.stu_ID_card=stu_basic_info.stu_ID_card "
+					+ "&& stu_reg.reg_subject = "+"'"+value+"'";
+		break;
+		}
+		PreparedStatement statement = null;
+		ResultSet resultset =null;
+		List<StuReg> StuReg = new ArrayList<>();
+		try {
+			statement = connection.prepareStatement(sql);  
+			resultset = statement.executeQuery();
+			while(resultset.next()) {
+				String stu_ID_card = resultset.getString(1);
+				String stu_name = resultset.getString(2);
+				Integer reg_subject = resultset.getInt(3);
+				Integer stu_subject = resultset.getInt(4);
+				StuReg.add(new StuReg(stu_ID_card,stu_name,reg_subject,stu_subject));
+			}
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, resultset);
+		}
+		return StuReg;
+	}
 	
 }

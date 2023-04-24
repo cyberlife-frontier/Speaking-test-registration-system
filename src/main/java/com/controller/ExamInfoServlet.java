@@ -20,6 +20,9 @@ import com.entity.StuReg;
 public class ExamInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ExamInfoService ExamInfoService = new ExamInfoServiceImpl();
+    String stu_ID_card =null;
+    Integer reg_subject = null;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -63,8 +66,25 @@ public class ExamInfoServlet extends HttpServlet {
 			request.setAttribute("reg_count", StuReg.size());
 			request.getRequestDispatcher("cet-reg-info.jsp").forward(request, response);
 			break;
-			
-		}
+		case "alterReg":
+			stu_ID_card = request.getParameter("stu_ID_card");
+			reg_subject = Integer.parseInt(request.getParameter("reg_subject"));
+			//System.out.println(stu_ID_card);
+			//System.out.println(reg_subject);
+			this.ExamInfoService.alterReg(stu_ID_card, reg_subject);
+			response.sendRedirect("ExamInfo?method=allReg");
+			break;
+		case "searchReg":
+			String key = request.getParameter("key");
+			String value = request.getParameter("value");
+			//System.out.println(key);
+			//System.out.println(value);
+			List<StuReg> searchReg = this.ExamInfoService.searchReg(key, value);
+			request.setAttribute("StuReg", searchReg);
+			request.setAttribute("reg_count", searchReg.size());
+			request.getRequestDispatcher("cet-reg-info.jsp").forward(request, response);
+			break;
+		}//outer switch
 		
 		
 		

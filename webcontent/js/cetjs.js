@@ -1,3 +1,48 @@
+function csschange(){
+    var key =  $("#key-change option:selected").val();
+    //console.log(key);
+    $('#id-key').attr("name","value");
+    $('#gen-key').attr("name","value");
+    $('#sub-key').attr("name","value");
+    switch(key){
+		case "stu_subject":
+			$('#id-key').removeAttr("name");
+        	$('#id-key').hide();
+        	$('#gen-key').removeAttr("name");
+        	$('#gen-key').hide();
+        	$('#sub-key').show();
+		break;
+		case "stu_gender":
+			$('#id-key').removeAttr("name");
+        	$('#id-key').hide();
+			$('#gen-key').show();
+			$('#sub-key').removeAttr("name");
+        	$('#sub-key').hide();
+		break;
+		case "stu_name":
+		case "stu_ID_type":
+			$('#id-key').show();
+			$('#gen-key').removeAttr("name");
+        	$('#gen-key').hide();
+        	$('#sub-key').removeAttr("name");
+        	$('#sub-key').hide();
+		break;
+	}
+    
+    /*if(key == "stu_subject"){
+        $('#id-key').removeAttr("name");
+        $('#id-key').hide();
+        $('#sub-key').show();
+    }else{
+    //document.getElementById("sub-key").style.display="inline";
+        $('#id-key').show();
+        $('#sub-key').removeAttr("name");
+        $('#sub-key').hide();
+
+    }*/
+
+};
+
 $('#updateUserModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var stuName = button.data('stu_name')

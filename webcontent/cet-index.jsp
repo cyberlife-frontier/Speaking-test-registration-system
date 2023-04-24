@@ -12,9 +12,9 @@
   <title>主页</title>
   
   <link rel="stylesheet" href="css/style.css">
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
   
   <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -79,9 +79,10 @@
     <form  role="form" class="form-inline" action="StuBasicInfo?method=search" method="post" >
       <div class="form-group">
         <label >条件：
-          <select name="key" class="form-control">
+          <select name="key" class="form-control" id="key-change"  onchange="csschange()">
             <option value="stu_name">学生姓名</option>
             <option value="stu_gender">性别</option>
+            <option value="stu_subject">资格科目</option>
             <option value="stu_ID_type">证件类型</option>
           </select>
         </label>
@@ -89,7 +90,15 @@
 
       <div class="form-group">
         <label >值：
-          <input type="text" class="form-control" name="value" placeholder="关键字" maxlength="12" >
+          <input id="id-key" type="text" class="form-control" name="value" placeholder="关键字" maxlength="12" >
+          <select id="gen-key" class="form-control" style="display:none;">
+            <option value="男" >男</option>
+            <option value="女" >女</option>
+          </select>
+          <select id="sub-key" class="form-control" style="display:none;">
+            <option value="1" >英语四级口试</option>
+            <option value="2" >英语四级、六级口试</option>
+          </select>
         </label>
       </div>
 

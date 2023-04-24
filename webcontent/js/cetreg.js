@@ -38,6 +38,25 @@ $('#updateUserModal').on('show.bs.modal', function(event) {
 		//modal.find('#StuSubject').val(StuSubject)
 	
   });
+  
+   function csschange(){
+    var key =  $("#key-change option:selected").val();
+    //console.log(key);
+    $('#id-key').attr("name","value");
+    $('#sub-key').attr("name","value")
+    if(key == "stu_ID_card"){
+        $('#id-key').show();
+        $('#sub-key').removeAttr("name");
+        $('#sub-key').hide();
+    }else{
+    //document.getElementById("sub-key").style.display="inline";
+        $('#id-key').removeAttr("name");
+        $('#id-key').hide();
+        $('#sub-key').show();
+
+    }
+
+};
    
   function check(){
 //var arr=document.getElementsByName("subject");

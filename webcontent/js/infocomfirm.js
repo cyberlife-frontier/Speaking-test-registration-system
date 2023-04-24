@@ -1,4 +1,3 @@
-
     $(function () {
         $("#imgPhotoShow").attr('src', 'images/AI.png' );
         if ($('#chkAssure').is(':checked')) {
@@ -26,7 +25,7 @@
     function toIndex() {
         $.messager.confirm('提示', '返回首页？', function (r) {
             if (r) {
-                location.href = 'students-sign-up.jsp';
+                location.href = 'forward-to-stusignup.jsp';
             }
         });
     };
