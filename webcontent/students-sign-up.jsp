@@ -46,7 +46,7 @@
     <link href="https://resource.neea.edu.cn/project/CET/Content/fudong.css" rel="stylesheet"> 
 </head>
 
-<body>
+<body onload="timeCheck()">
 <div id="mbox" style="width: 100%;">
     <div class="OnlineService_Bg">
         <div class="OnlineService_Box">
@@ -66,16 +66,16 @@
             <div id="nav">
                 <div id="panel-nav" style="width:980px; text-align:center;">
                     <ul class="">
-                        <li style="padding-right:0px;"><a href="#" target="_parent" style="padding-top:3px;">
+                        <li style="padding-right:0px;"><a href="javascript:void(0)" target="_parent" style="padding-top:3px;">
                         <img src="https://resource.neea.edu.cn/project/CET/images/home.png" width="16" height="14" alt=""></a></li>
-                        <li style="padding:5px 0 0 0;"><a href="#" target="_parent">首页</a> | </li>
-                        <li style="padding:5px 0 0 30px;"><a href="#" target="_parent">考试简介</a> | </li>
-                        <li style="padding:5px 0 0 30px;"><a href="#" target="_parent">考生须知</a> | </li>
-                        <li style="padding:5px 0 0 30px;"><a href="#" target="_parent">考试时间</a> | </li>
-                        <li style="padding:5px 0 0 30px;"><a href="#" target="_parent">报名流程</a> | </li>
-                        <li style="padding:5px 0 0 30px;"><a href="#" target="_parent">常见问题</a> | </li>
-                        <li style="padding:5px 0 0 30px;"><a href="#" target="_parent">成绩报告单</a> |</li>
-                        <li style="padding: 5px 0 0 30px;"><a href="#" target="_parent">联系我们</a></li>
+                        <li style="padding:5px 0 0 0;"><a href="javascript:void(0)" target="_parent">首页</a> | </li>
+                        <li style="padding:5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">考试简介</a> | </li>
+                        <li style="padding:5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">考生须知</a> | </li>
+                        <li style="padding:5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">考试时间</a> | </li>
+                        <li style="padding:5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">报名流程</a> | </li>
+                        <li style="padding:5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">常见问题</a> | </li>
+                        <li style="padding:5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">成绩报告单</a> |</li>
+                        <li style="padding: 5px 0 0 30px;"><a href="javascript:void(0)" target="_parent">联系我们</a></li>
                     </ul>
                 </div>
             </div>
@@ -98,31 +98,34 @@
     <div id="main">
         <div id="main_l" style="line-height:2.1em;">
 
-            <a href="qualification-info-query.jsp" class="c_hei cet_banner01">
+            <a href="javascript:void(0)" id="enter-sign-up" class="c_hei cet_banner01">
                 <p class="f20">进入报名</p>
                 <p class="">ENTRY</p>
             </a>
 
-            <a href="registration-info-query.jsp" class="c_hei cet_banner02">
+            <a href="javascript:void(0)" id="query-alter-info" class="c_hei cet_banner02">
                 <p class="f20">查询/修改报名信息</p>
                 <p class="">REGISTER / MODIFY USER</p>
             </a>
 
-            <a href="#" class="c_hei cet_banner05">
+            <a href="javascript:void(0)" class="c_hei cet_banner05">
                 <p class="f20">找回已报名账号</p>
                 <p class="">RETRIEVE ACCOUNT</p>
             </a>
-            <a href="#" class="c_hei cet_banner03" target="_blank">
+            <a href="javascript:void(0)" class="c_hei cet_banner03" >
                 <p class="f20">补办成绩证明</p>
                 <p class="">TRANSCRIPT COPY RE-ORDER</p>
             </a>
 
-            <a href="#" class="c_hei cet_banner03">
+            <a href="javascript:void(0)" class="c_hei cet_banner03">
                 <p class="f20">常见问题</p>
                 <p class="">COMMON PROBLEM</p>
             </a>
 
         </div>
+        <input type="hidden" id="beginning" value="${ExamTime.beginning}">
+        <input type="hidden" id="deadline" value="${ExamTime.deadline}">
+        
         <div id="main_c">
             <div class="title_b"><a href="#"><img src="images/lun_d.jpg" width="300" height="370" alt=""></a></div><!--270-->
         </div>
@@ -138,6 +141,10 @@
                         <li><span>起始时间：${ExamTime.beginning_sub}</span>
                         <span style="padding-left:4em;">截止时间： ${ExamTime.deadline_sub}</span></li>
                     </ul>
+                    <ul style="margin-top: 0.5em;">
+                        <li ><span id="info-tip" style="font-size:20px;color:red;"></span></li>
+                    </ul>
+                    
                 </div>
                 <hr class="hr_line">
                 <div style="padding:10px;line-height:1.8em;" class="main_info_l">
@@ -171,8 +178,9 @@
     </div>
 
 </div>
+	<script type="text/javascript" src="https://resource.neea.edu.cn/project/CET/scripts/jquery.min.js"></script>
+    <script src="js/stusign.js"></script>
+    <!-- <script src="https://resource.neea.edu.cn/project/CET/Assets/global/plugins/jquery.min.js" type="text/javascript"></script> -->
     
-    <script src="https://resource.neea.edu.cn/project/CET/Assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://resource.neea.edu.cn/project/CET/scripts/jquery.min.js"></script>
 </body>
 </html>
