@@ -176,12 +176,12 @@
 
               <table class="table table-bordered table-hover table-striped table-condensed" style="line-height:50px;border:0;">
                 <tr>
-                  <td class="lz_td1">笔试报名学校：</td>
-                  <td class="lz_td2" colspan="3"></td>
+                  <td class="lz_td1" >笔试报名学校：</td>
+                  <td class="lz_td2" colspan="3" id="university"></td>
                 </tr>
                 <tr>
                   <td class="lz_td1">笔试报名校区：</td>
-                  <td class="lz_td2" colspan="3"></td>
+                  <td class="lz_td2" colspan="3" id="campus"></td>
                 </tr>
 
                 <tr>
@@ -189,31 +189,31 @@
                 </tr>
 
                 <tr>
-                  <td class="lz_td1">学　　历：</td>
-                  <td class="lz_td2"></td>
-                  <td class="lz_td1">学　　制：</td>
-                  <td class="lz_td2"></td>
+                  <td class="lz_td1" >学　　历：</td>
+                  <td class="lz_td2" id="eduback"></td>
+                  <td class="lz_td1" >学　　制：</td>
+                  <td class="lz_td2" id="lengthschool"></td>
                 </tr>
 
                 <tr>
                   <td class="lz_td1">入学年份：</td>
-                  <td class="lz_td2"></td>
+                  <td class="lz_td2" id="enrollschool"></td>
                   <td class="lz_td1">年　　级：</td>
-                  <td class="lz_td2"></td>
+                  <td class="lz_td2" id="grade"></td>
                 </tr>
 
                 <tr>
-                  <td class="lz_td1">院　　系：</td>
-                  <td class="lz_td2"></td>
-                  <td class="lz_td1">专　　业：</td>
-                  <td class="lz_td2"></td>
+                  <td class="lz_td1" >院　　系：</td>
+                  <td class="lz_td2" id="school"></td>
+                  <td class="lz_td1" >专　　业：</td>
+                  <td class="lz_td2" id="major"></td>
                 </tr>
 
                 <tr>
-                  <td class="lz_td1">班　　级：</td>
-                  <td class="lz_td2"></td>
-                  <td class="lz_td1">学　　号：</td>
-                  <td class="lz_td2"></td>
+                  <td class="lz_td1" >班　　级：</td>
+                  <td class="lz_td2" id="class"></td>
+                  <td class="lz_td1" >学　　号：</td>
+                  <td class="lz_td2" id="stunum"></td>
                 </tr>
 
                 <tr>
@@ -281,5 +281,36 @@
     </p>
   </div>
 </div>
+
+<script type="text/javascript">
+
+      let url ="https://www.fastmock.site/mock/4e9965370d6de407098f588f3c173eaf/getstuinfo/getinfo"
+      $.ajax({
+      url: url,
+      type: "get",
+      dataType: "json",
+      success: function(data) {
+          StuStatusInfo = data.StuStatusInfo
+          schoolInfo = StuStatusInfo.schoolInfo
+          StuInfo = StuStatusInfo.StuInfo
+          $("#university").text(StuStatusInfo.university)
+          $("#campus").text(StuStatusInfo.campus)
+          $("#school").text(schoolInfo.school)
+          $("#major").text(schoolInfo.major)
+          $("#class").text(schoolInfo.class)
+          $("#stunum").text(StuInfo.stunum)
+          $("#eduback").text(StuInfo.eduback)
+          $("#lengthschool").text(StuInfo.lengthschool)
+          $("#enrollschool").text(StuInfo.enrollschool)
+          $("#grade").text(StuInfo.grade)
+      },
+      error:function (error) {
+          console.log(error)
+      }
+      })
+      </script>
+
+
+
 </body>
 </html>

@@ -357,10 +357,54 @@
 </form>
 <!--issue test time-->
 
+<!--statistics-->
+<div class="modal fade" id="staExamInfo" tabindex="-1"
+     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">x</button>
+        <h4 class="modal-title" >考场信息统计</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label  class="col-sm-3 control-label">起始时间</label>
+            <div class="col-sm-9">
+
+              <p class="form-control"></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label  class="col-sm-3 control-label">截止时间</label>
+            <div class="col-sm-9">
+              <p class="form-control"></p>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger " data-dismiss="modal">关闭</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <h3>&nbsp;</h3>
 
 <!--sum of students-->
-<h3 style=" color：blue; text-align:center" >共有学生${stu_count}人</h3>
+<div style="display:flex;justify-content:center;">
+  <p style="font-size:20px;">共有学生<i style=" color:blue;" >${stu_count}</i> 人</p>
+  <button type="button" class="button-default" data-toggle="modal"
+          data-target="#staExamInfo">统计</button>
+</div>
 
 <!--show students info-->	     
 <div class="container">
@@ -416,6 +460,9 @@
   </table>
 </div>
 <!--show students info  -->
+
+	
+
 
 <!--the sequence of imported scripts cannot be changed -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>

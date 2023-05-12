@@ -250,4 +250,16 @@ body {
 .button-search:hover{
    background-color:#16BBFF;
 }
-
+.button-default{
+        width: 100px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 15px;
+        border: none;
+        border-radius: 40px;
+        background-color:#73BB7F;
+        color:white;
+}
+.button-default:hover{
+    background-color:#73D27D;
+}
