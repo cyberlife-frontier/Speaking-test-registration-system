@@ -29,4 +29,14 @@
     <servlet-name>StuRegServlet</servlet-name>
     <url-pattern>/StuRegServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StuStatusInfoServlet</display-name>
+    <servlet-name>StuStatusInfoServlet</servlet-name>
+    <servlet-class>com.controller.StuStatusInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StuStatusInfoServlet</servlet-name>
+    <url-pattern>/StuStatusInfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

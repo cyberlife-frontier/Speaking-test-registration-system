@@ -368,25 +368,19 @@
         <h4 class="modal-title" >考场信息统计</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" role="form">
-
-          <div class="form-group">
-            <label  class="col-sm-3 control-label">起始时间</label>
-            <div class="col-sm-9">
-
-              <p class="form-control"></p>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label  class="col-sm-3 control-label">截止时间</label>
-            <div class="col-sm-9">
-              <p class="form-control"></p>
-
-            </div>
-          </div>
-
-        </form>
+        <table class="table table-bordered table-hover table-striped table-condensed" 
+        style="line-height:50px;border:0;">
+        	<tr>
+              <td class="lz_td1">笔试报名学校：</td>
+              <td class="lz_td2" colspan="3" ></td>
+            </tr>
+            <tr>
+              <td class="lz_td1">笔试报名校区：</td>
+              <td class="lz_td2" colspan="3" ></td>
+            </tr>
+        
+        
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger " data-dismiss="modal">关闭</button>
@@ -395,7 +389,78 @@
     </div>
   </div>
 </div>
+<!--statistics-->
 
+<!--status info-->
+<div class="modal fade" id="stuStatusInfo" tabindex="-1"
+     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+        <div class="zc_a_box" >
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">x</button>
+            <h4 class="modal-title" >学籍信息</h4>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12"  >
+
+              <table class="table table-bordered table-hover table-striped table-condensed" 
+              style="line-height:50px;border:0;">
+                <tr>
+                  <td class="lz_td1">笔试报名学校：</td>
+                  <td class="lz_td2" colspan="3" id="University"></td>
+                </tr>
+                <tr>
+                  <td class="lz_td1">笔试报名校区：</td>
+                  <td class="lz_td2" colspan="3" id="Campus"></td>
+                </tr>
+
+                <tr>
+                  <td class="lz_td1">学　　历：</td>
+                  <td class="lz_td2" id="EduBack"></td>
+                  <td class="lz_td1">学　　制：</td>
+                  <td class="lz_td2" id="LengthSchool"></td>
+                </tr>
+
+                <tr>
+                  <td class="lz_td1">入学年份：</td>
+                  <td class="lz_td2" id="EnrollSchool"></td>
+                  <td class="lz_td1">年　　级：</td>
+                  <td class="lz_td2" id="Grade"></td>
+                </tr>
+
+                <tr>
+                  <td class="lz_td1">院　　系：</td>
+                  <td class="lz_td2" id="School"></td>
+                  <td class="lz_td1">专　　业：</td>
+                  <td class="lz_td2" id="Major"></td>
+                </tr>
+
+                <tr>
+                  <td class="lz_td2">班　　级：</td>
+                  <td class="lz_td1" id="StuClass"></td>
+                  <td class="lz_td1">学　　号：</td>
+                  <td class="lz_td2" id="StuNum"></td>
+                </tr>
+
+                <tr>
+                  <td class="lz_td1">备　　注：</td>
+                  <td class="lz_td2" colspan="3"></td>
+                </tr>
+              </table>
+            </div><!--col-md-12-->
+          </div><!--row-->
+        </div><!--zc_a_box-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger " data-dismiss="modal">关闭</button>
+        </div>
+    </div><!--modal-content-->
+  </div><!--modal-dialog-->
+</div>
+<!--status info-->
 
 <h3>&nbsp;</h3>
 
@@ -424,7 +489,7 @@
     <tbody>
     <!-- 表主体 -->
     
-    <c:forEach items="${StuBasicInfo }" var="sbi">
+    <c:forEach items="${StuBasicInfo }" var="sbi" varStatus="state">
     <tr>
       <td>${sbi.stu_name }</td><!-- 姓名 -->
       <td>${sbi.stu_gender }</td><!--性别  -->
@@ -435,6 +500,7 @@
       <c:if test="${sbi.stu_subject == 2 }">英语四级口试;英语六级口试</c:if>
       </td><!-- 资格科目 -->
       <td>
+      <!-- updateUserModal -->
       	 <button type="button" class="btn btn-default "
                   data-stu_name="${sbi.stu_name }"
                   data-stu_gender="${sbi.stu_gender }"
@@ -446,11 +512,31 @@
                   data-target="#updateUserModal">
         	<i class="fa fa-user-o">修改</i>
       	</button>
+      <!-- updateUserModal -->
+      <!-- delUserModal -->
       <button type="button" class="btn btn-danger "
                 data-stu_id_card="${sbi.stu_ID_card }" data-toggle="modal"
                 onclick="" data-target="#delUserModal">
           <i class="fa fa-user-times">删除</i>
-        </button> 学籍信息
+        </button> 
+        <!-- delUserModal -->
+        <!-- StuBasicInfo -->
+        <button type="button" class="btn btn-default "
+        		data-stu_id_card="${StuStatusInfo[state.index].stu_ID_card }"
+        		data-university="${StuStatusInfo[state.index].university }"
+        		data-campus="${StuStatusInfo[state.index].campus }"
+        		data-school="${StuStatusInfo[state.index].school }"
+        		data-major="${StuStatusInfo[state.index].major }"
+        		data-stu_class="${StuStatusInfo[state.index].stu_class }"
+        		data-grade="${StuStatusInfo[state.index].grade }"
+        		data-stunum="${StuStatusInfo[state.index].stunum }"
+        		data-eduback="${StuStatusInfo[state.index].eduback }"
+        		data-lengthschool="${StuStatusInfo[state.index].lengthschool }"
+        		data-enrollschool="${StuStatusInfo[state.index].enrollschool }"
+                 data-toggle="modal"
+                 data-target="#stuStatusInfo">
+          <i class="fa fa-user-times">学籍信息</i>
+        </button>
       </td>
     </tr>
     </c:forEach>
@@ -460,9 +546,6 @@
   </table>
 </div>
 <!--show students info  -->
-
-	
-
 
 <!--the sequence of imported scripts cannot be changed -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>

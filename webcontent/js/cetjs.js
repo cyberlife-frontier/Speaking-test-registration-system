@@ -91,6 +91,33 @@ $('#updateUserModal').on('show.bs.modal', function(event) {
 
     });
 
+$('#stuStatusInfo').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var University = button.data('university')
+		var Campus = button.data('campus')
+		var School = button.data('school')
+		var Major = button.data('major')
+		var stuClass = button.data('stu_class')
+		var Grade = button.data('grade')
+		var stuNum = button.data('stunum')
+		var eduBack = button.data('eduback')
+		var lengthSchool = button.data('lengthschool')
+		var enrollSchool = button.data('enrollschool').slice(0,10)
+
+        var modal = $(this)
+		
+		modal.find('#University').text(University)
+        modal.find('#Campus').text(Campus)
+        modal.find('#School').text(School)
+        modal.find('#Major').text(Major)
+        modal.find('#StuClass').text(stuClass)
+        modal.find('#Grade').text(Grade)
+        modal.find('#StuNum').text(stuNum)
+        modal.find('#EduBack').text(eduBack)
+        modal.find('#LengthSchool').text(lengthSchool)
+        modal.find('#EnrollSchool').text(enrollSchool)
+     
+    });
 
 $('#addUserModal').on('show.bs.modal');
 
