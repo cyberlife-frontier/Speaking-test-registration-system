@@ -8,7 +8,7 @@
 		</script>
 	</head>
 <body >
-	<form name="sbi" action="StuBasicInfo?method=all" method="post"></form>
+	<form name="sbi" action="StuStatusInfo?method=fn" method="post"></form>
 
 </body>
 </html>

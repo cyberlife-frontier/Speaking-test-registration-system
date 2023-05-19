@@ -61,9 +61,11 @@ public class StuBasicInfoServlet extends HttpServlet {
 			String key = request.getParameter("key");
 			String value = request.getParameter("value");
 			List<StuBasicInfo> StuSearch = this.StuBasicInfoService.StuSearch(key, value);
-			request.setAttribute("StuBasicInfo", StuSearch);
-			request.setAttribute("stu_count", StuSearch.size());
-			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
+			request.getServletContext().setAttribute("StuBasicInfo", StuSearch);
+			request.getServletContext().setAttribute("stu_count", StuSearch.size());
+			//request.setAttribute("StuBasicInfo", StuSearch);
+			//request.setAttribute("stu_count", StuSearch.size());
+			request.getRequestDispatcher("StuStatusInfo?method=search").forward(request, response);
 			break;
 		case "add":			
 			stu_name = request.getParameter("stu_name"); 

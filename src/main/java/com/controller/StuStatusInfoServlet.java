@@ -6,19 +6,27 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
 import com.entity.StuStatusInfo;
+import com.service.StuBasicInfoService;
 import com.service.StuStatusInfoService;
+import com.service.impl.StuBasicInfoServiceImpl;
 import com.service.impl.StuStatusInfoServiceImpl;
 import com.entity.StuBasicInfo;
+import com.entity.CamStat;
 /**
  * Servlet implementation class StuStatusInfoServlet
  */
 @WebServlet("/StuStatusInfo")
 public class StuStatusInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private StuStatusInfoService StuStatusInfoService =new StuStatusInfoServiceImpl();
+	private StuBasicInfoService StuBasicInfoService = new StuBasicInfoServiceImpl();
+	private StuStatusInfoService StuStatusInfoService =new StuStatusInfoServiceImpl();
+	List<StuBasicInfo> StuBasicInfo = new ArrayList<>();
+	List<StuStatusInfo> StuStatusInfo =null;
+		
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,19 +50,32 @@ public class StuStatusInfoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String method = request.getParameter("method");
-	
 		switch(method) {
 		case "all":
-			List<StuStatusInfo> StuStatusInfo = this.StuStatusInfoService.StuStatusInfo();
-			request.setAttribute("StuStatusInfo", StuStatusInfo);
 			request.getServletContext().getAttribute("StuBasicInfo");
 			request.getServletContext().getAttribute("stu_count");
-			//System.out.println(StuBasicInfo);
-			//System.out.println(stu_count);
+			StuStatusInfo = this.StuStatusInfoService.StuStatusInfo();
+			request.setAttribute("StuStatusInfo", StuStatusInfo);
 			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
 			break;
-			
-		}
+		case "search":
+			Object stu = request.getServletContext().getAttribute("StuBasicInfo");
+			Integer count =(Integer)request.getServletContext().getAttribute("stu_count");
+			StuStatusInfo = this.StuStatusInfoService.StuSearch(stu, count);
+			request.setAttribute("StuStatusInfo", StuStatusInfo);
+			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
+			break;
+		case "fn":
+			StuBasicInfo = this.StuBasicInfoService.StuBasicInfo();
+			StuStatusInfo = this.StuStatusInfoService.StuStatusInfo();
+			List<CamStat> CamStat = this.StuStatusInfoService.CamStat();
+			request.setAttribute("StuBasicInfo", StuBasicInfo);
+			request.setAttribute("stu_count", StuBasicInfo.size());
+			request.setAttribute("StuStatusInfo", StuStatusInfo);
+			System.out.println(CamStat);
+			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
+			break;
+		}//switch
 		
 		
 	}
