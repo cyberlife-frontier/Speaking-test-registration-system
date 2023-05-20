@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.service.StuBasicInfoService;
+import com.service.StuStatusInfoService;
 import com.service.impl.StuBasicInfoServiceImpl;
+import com.service.impl.StuStatusInfoServiceImpl;
 import com.entity.StuBasicInfo;
+import com.entity.StuStatusInfo;
 /**
  * Servlet implementation class StuBasicInfoServlet
  */
@@ -19,6 +22,7 @@ import com.entity.StuBasicInfo;
 public class StuBasicInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private StuBasicInfoService StuBasicInfoService = new StuBasicInfoServiceImpl();
+    private StuStatusInfoService StuStatusInfoService =new StuStatusInfoServiceImpl();
     StuBasicInfo StuBasicInfo = null;
     String stu_name,stu_gender,stu_ID_type,stu_ID_card = null;
     Integer stu_subject = null;
@@ -74,8 +78,25 @@ public class StuBasicInfoServlet extends HttpServlet {
 			stu_ID_card = request.getParameter("stu_ID_card");
 			String temp = request.getParameter("stu_subject");
 			stu_subject = Integer.parseInt(temp);
+			String university = request.getParameter("university"); 
+			String campus = request.getParameter("campus"); 
+			String school = request.getParameter("school"); 
+			String major = request.getParameter("major"); 
+			String stu_class = request.getParameter("class"); 
+			String stunum = request.getParameter("stunum"); 
+			String eduback = request.getParameter("eduback"); 
+			temp = request.getParameter("lengthschool"); 
+			Integer lengthschool = Integer.parseInt(temp);
+			String enrollschool = request.getParameter("enrollschool"); 
+			String grade = request.getParameter("grade");
 			
-			this.StuBasicInfoService.StuAdd(new StuBasicInfo(stu_ID_card,stu_ID_type,stu_gender,stu_name,stu_subject));
+			//System.out.println(university);
+			
+			this.StuBasicInfoService.StuAdd(new StuBasicInfo(stu_ID_card,stu_ID_type,
+					stu_gender,stu_name,stu_subject));
+			this.StuStatusInfoService.StuAdd(new StuStatusInfo(stu_ID_card,university,campus,
+					school,major,stu_class,grade,stunum,eduback,lengthschool,enrollschool));
+			
 			response.sendRedirect("StuBasicInfo?method=all");
 			break;
 		case "update":

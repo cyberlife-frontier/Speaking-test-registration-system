@@ -1,3 +1,29 @@
+let url ="https://www.fastmock.site/mock/4e9965370d6de407098f588f3c173eaf/getstuinfo/getinfo"
+      $.ajax({
+      url: url,
+      type: "get",
+      dataType: "json",
+      success: function(data) {
+          StuStatusInfo = data.StuStatusInfo
+          schoolInfo = StuStatusInfo.schoolInfo
+          StuInfo = StuStatusInfo.StuInfo
+          
+          $("#university").val(StuStatusInfo.university)
+          $("#campus").val(StuStatusInfo.campus)
+          $("#school").val(schoolInfo.school)
+          $("#major").val(schoolInfo.major)
+          $("#class").val(schoolInfo.class)
+          $("#stunum").val(StuInfo.stunum)
+          $("#eduback").val(StuInfo.eduback)
+          $("#lengthschool").val(StuInfo.lengthschool)
+          $("#enrollschool").val(StuInfo.enrollschool)
+          $("#grade").val(StuInfo.grade)
+      },
+      error:function (error) {
+          console.log(error)
+      }
+})
+
 function csschange(){
     var key =  $("#key-change option:selected").val();
     //console.log(key);

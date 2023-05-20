@@ -9,5 +9,6 @@ public interface StuStatusInfoService {
 	public List<StuStatusInfo> StuStatusInfo();
 	public List<StuStatusInfo> StuSearch(Object stu,Integer count);
 	public List<CamStat> CamStat();
+	public void StuAdd(StuStatusInfo StuStatusInfo);
 	
 }

@@ -186,8 +186,20 @@
                 &nbsp;&nbsp;&nbsp;
                 <input type="radio" value="2" name="stu_subject">英语四级口试;英语六级口试
               </div>
-
             </div>
+           
+            <div class="form-group">
+            <input type="hidden" name="university" id="university">
+            <input type="hidden" name="campus" id="campus">
+            <input type="hidden" name="school" id="school">
+            <input type="hidden" name="major" id="major">
+            <input type="hidden" name="class" id="class">
+            <input type="hidden" name="stunum" id="stunum">
+            <input type="hidden" name="eduback" id="eduback">
+            <input type="hidden" name="lengthschool" id="lengthschool">
+            <input type="hidden" name="enrollschool" id="enrollschool">
+            <input type="hidden" name="grade" id="grade">
+            </div> 
           </form>
         </div>
         <div class="modal-footer">

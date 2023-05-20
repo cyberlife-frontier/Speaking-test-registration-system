@@ -9,5 +9,5 @@ public interface StuStatusInfoDao {
 	public List<StuStatusInfo> StuStatusInfo();
 	public List<StuStatusInfo> StuSearch(String Stu_ID_card);
 	public List<CamStat> CamStat();
-	
+	public Integer StuAdd(StuStatusInfo StuStatusInfo);
 }

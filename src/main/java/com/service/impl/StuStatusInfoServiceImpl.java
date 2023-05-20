@@ -126,4 +126,11 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 		return CamStat;
 	}
 
+	@Override
+	public void StuAdd(StuStatusInfo StuStatusInfo) {
+		// TODO 自动生成的方法存根
+		Integer stu_add = this.StuStatusInfoDao.StuAdd(StuStatusInfo);
+		if(stu_add !=1) throw new RuntimeException("学生信息添加失败");
+	}
+
 }

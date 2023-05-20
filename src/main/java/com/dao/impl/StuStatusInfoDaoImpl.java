@@ -115,4 +115,38 @@ public class StuStatusInfoDaoImpl implements  StuStatusInfoDao{
 		return CamStatIni;
 	}
 
+	@Override
+	public Integer StuAdd(StuStatusInfo StuStatusInfo) {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = "insert into stu_status_info(stu_ID_card,university,campus,school,major"
+				+ ",class,grade,stunum,eduback,lengthschool,enrollschool) "
+				+ "value(?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement statement = null;
+		Integer result = null;
+		try {
+			statement = connection.prepareStatement(sql);  
+			statement.setString(1, StuStatusInfo.getStu_ID_card());
+			statement.setString(2, StuStatusInfo.getUniversity());
+			statement.setString(3, StuStatusInfo.getCampus());
+			statement.setString(4, StuStatusInfo.getSchool());
+			statement.setString(5, StuStatusInfo.getMajor());
+			statement.setString(6, StuStatusInfo.getStu_class());
+			statement.setString(7, StuStatusInfo.getGrade());
+			statement.setString(8, StuStatusInfo.getStunum());
+			statement.setString(9, StuStatusInfo.getEduback());
+			statement.setInt(10, StuStatusInfo.getLengthschool());
+			statement.setString(11, StuStatusInfo.getEnrollschool());
+			
+			result = statement.executeUpdate();
+			
+			
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, null);
+		}
+		return result;
+	}
+
 }
