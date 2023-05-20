@@ -370,16 +370,22 @@
       <div class="modal-body">
         <table class="table table-bordered table-hover table-striped table-condensed" 
         style="line-height:50px;border:0;">
-        	<tr>
-              <td class="lz_td1">笔试报名学校：</td>
-              <td class="lz_td2" colspan="3" ></td>
-            </tr>
-            <tr>
-              <td class="lz_td1">笔试报名校区：</td>
-              <td class="lz_td2" colspan="3" ></td>
-            </tr>
-        
-        
+        <c:forEach items="${CamStat}" var="cs">
+        	<c:if test="${cs.university eq '哈尔滨工业大学' }">
+        	      <tr><th colspan="2">哈尔滨工业大学</th></tr>  
+           </c:if>
+           <c:if test="${cs.university eq '华东师范大学' }">
+        	      <tr><th colspan="2">华东师范大学</th></tr>  
+           </c:if>
+           <c:if test="${cs.university eq '太原理工大学' }">
+        	      <tr><th colspan="2">太原理工大学</th></tr>  
+           </c:if>
+           <tr>
+           	<td>${cs.campus }</td>
+           	<td>${cs.count }人</td>
+           </tr>   
+           
+		</c:forEach>
         </table>
       </div>
       <div class="modal-footer">
@@ -546,6 +552,7 @@
   </table>
 </div>
 <!--show students info  -->
+
 
 <!--the sequence of imported scripts cannot be changed -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>

@@ -34,7 +34,7 @@
     <li><a href="#">学生信息<i class="fas fa-caret-down"></i></a>
       <div class="dropdown-menu">
         <ul>
-          <li><a href="StuBasicInfo?method=all">资质信息</a></li>
+          <li><a href="StuStatusInfo?method=fn">资质信息</a></li>
           <li><a href="javascript:void(0)">报名信息</a></li>
         </ul>
       </div>
