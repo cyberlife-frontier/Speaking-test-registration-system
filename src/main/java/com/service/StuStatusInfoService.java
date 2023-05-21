@@ -10,5 +10,5 @@ public interface StuStatusInfoService {
 	public List<StuStatusInfo> StuSearch(Object stu,Integer count);
 	public List<CamStat> CamStat();
 	public void StuAdd(StuStatusInfo StuStatusInfo);
-	
+	public void StuDelete(String stu_ID_card);
 }

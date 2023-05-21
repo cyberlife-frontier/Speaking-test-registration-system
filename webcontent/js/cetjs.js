@@ -24,6 +24,13 @@ let url ="https://www.fastmock.site/mock/4e9965370d6de407098f588f3c173eaf/getstu
       }
 })
 
+function checkstate(){
+	if($("#state").val() == "signed"){
+		alert("该学生已经报名，无法删除")
+		
+	}
+}
+
 function csschange(){
     var key =  $("#key-change option:selected").val();
     //console.log(key);

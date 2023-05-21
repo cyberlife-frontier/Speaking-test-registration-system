@@ -50,21 +50,23 @@ public class StuStatusInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		CamStat = this.StuStatusInfoService.CamStat();
+		
 		String method = request.getParameter("method");
 		switch(method) {
 		case "all":
-			request.getServletContext().getAttribute("StuBasicInfo");
-			request.getServletContext().getAttribute("stu_count");
+			request.getAttribute("StuBasicInfo");
+			request.getAttribute("stu_count");
 			StuStatusInfo = this.StuStatusInfoService.StuStatusInfo();
+			CamStat = this.StuStatusInfoService.CamStat();
 			request.setAttribute("StuStatusInfo", StuStatusInfo);
 			request.setAttribute("CamStat", CamStat);
 			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
 			break;
 		case "search":
-			Object stu = request.getServletContext().getAttribute("StuBasicInfo");
-			Integer count =(Integer)request.getServletContext().getAttribute("stu_count");
+			Object stu = request.getAttribute("StuBasicInfo");
+			Integer count =(Integer)request.getAttribute("stu_count");
 			StuStatusInfo = this.StuStatusInfoService.StuSearch(stu, count);
+			CamStat = this.StuStatusInfoService.CamStat();
 			request.setAttribute("StuStatusInfo", StuStatusInfo);
 			request.setAttribute("CamStat", CamStat);
 			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
@@ -72,9 +74,11 @@ public class StuStatusInfoServlet extends HttpServlet {
 		case "fn":
 			StuBasicInfo = this.StuBasicInfoService.StuBasicInfo();
 			StuStatusInfo = this.StuStatusInfoService.StuStatusInfo();
+			CamStat = this.StuStatusInfoService.CamStat();
 			request.setAttribute("StuBasicInfo", StuBasicInfo);
 			request.setAttribute("stu_count", StuBasicInfo.size());
 			request.setAttribute("StuStatusInfo", StuStatusInfo);
+			
 			request.setAttribute("CamStat", CamStat);
 			//System.out.println(CamStat);
 			request.getRequestDispatcher("cet-index.jsp").forward(request, response);

@@ -133,4 +133,11 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 		if(stu_add !=1) throw new RuntimeException("学生信息添加失败");
 	}
 
+	@Override
+	public void StuDelete(String stu_ID_card) {
+		// TODO 自动生成的方法存根
+		Integer stu_delete = this.StuStatusInfoDao.StuDelete(stu_ID_card);
+		if(stu_delete != 1 ) throw new RuntimeException("学籍信息删除失败");
+	}
+
 }

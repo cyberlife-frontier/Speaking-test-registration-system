@@ -149,4 +149,26 @@ public class StuStatusInfoDaoImpl implements  StuStatusInfoDao{
 		return result;
 	}
 
+	@Override
+	public Integer StuDelete(String stu_ID_card) {
+		// TODO 自动生成的方法存根
+		Connection connection = JDBCUtil.getDBconnection();
+		String sql = "delete from stu_status_info where stu_ID_card = ?" ;
+		PreparedStatement statement = null;
+		//ResultSet resultset =null;
+		Integer result = null;
+		try {
+			statement = connection.prepareStatement(sql);  
+			statement.setString(1, stu_ID_card);
+			
+			result = statement.executeUpdate();
+				
+		}catch(SQLException throwables) {
+			
+		}finally {
+			JDBCUtil.closeDB(connection, statement, null);
+		}
+		return result;
+	}
+
 }

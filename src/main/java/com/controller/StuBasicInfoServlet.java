@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.service.StuBasicInfoService;
+import com.service.StuRegService;
 import com.service.StuStatusInfoService;
 import com.service.impl.StuBasicInfoServiceImpl;
+import com.service.impl.StuRegServiceImpl;
 import com.service.impl.StuStatusInfoServiceImpl;
+import com.dto.StuRegDto;
 import com.entity.StuBasicInfo;
 import com.entity.StuStatusInfo;
 /**
@@ -23,6 +26,7 @@ public class StuBasicInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private StuBasicInfoService StuBasicInfoService = new StuBasicInfoServiceImpl();
     private StuStatusInfoService StuStatusInfoService =new StuStatusInfoServiceImpl();
+    private StuRegService StuRegService =new StuRegServiceImpl();
     StuBasicInfo StuBasicInfo = null;
     String stu_name,stu_gender,stu_ID_type,stu_ID_card = null;
     Integer stu_subject = null;
@@ -57,16 +61,16 @@ public class StuBasicInfoServlet extends HttpServlet {
 			List<StuBasicInfo> StuBasicInfo = this.StuBasicInfoService.StuBasicInfo();
 			//request.setAttribute("StuBasicInfo",StuBasicInfo);
 			//request.setAttribute("stu_count", StuBasicInfo.size());
-			request.getServletContext().setAttribute("StuBasicInfo",StuBasicInfo);
-			request.getServletContext().setAttribute("stu_count", StuBasicInfo.size());
+			request.setAttribute("StuBasicInfo",StuBasicInfo);
+			request.setAttribute("stu_count", StuBasicInfo.size());
 			request.getRequestDispatcher("StuStatusInfo?method=all").forward(request, response);
 			break;
 		case "search":
 			String key = request.getParameter("key");
 			String value = request.getParameter("value");
 			List<StuBasicInfo> StuSearch = this.StuBasicInfoService.StuSearch(key, value);
-			request.getServletContext().setAttribute("StuBasicInfo", StuSearch);
-			request.getServletContext().setAttribute("stu_count", StuSearch.size());
+			request.setAttribute("StuBasicInfo", StuSearch);
+			request.setAttribute("stu_count", StuSearch.size());
 			//request.setAttribute("StuBasicInfo", StuSearch);
 			//request.setAttribute("stu_count", StuSearch.size());
 			request.getRequestDispatcher("StuStatusInfo?method=search").forward(request, response);
@@ -112,8 +116,19 @@ public class StuBasicInfoServlet extends HttpServlet {
 			break;
 		case "delete":
 			stu_ID_card = request.getParameter("stu_ID_card");
-			this.StuBasicInfoService.StuDelete(stu_ID_card);
-			response.sendRedirect("StuBasicInfo?method=all");
+			StuRegDto StuRegDto = this.StuRegService.queryReg(stu_ID_card);
+			if(StuRegDto.getCode() == 0) {
+				request.setAttribute("StuReg", "signed");
+				request.getRequestDispatcher("StuStatusInfo?method=fn").forward(request, response);
+				
+			}
+			else 
+				{
+				this.StuBasicInfoService.StuDelete(stu_ID_card);
+				this.StuStatusInfoService.StuDelete(stu_ID_card);
+				response.sendRedirect("StuBasicInfo?method=all");
+			}
+			
 			break;
 		}
 		

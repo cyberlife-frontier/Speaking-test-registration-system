@@ -20,7 +20,7 @@
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   
 </head>
-<body>
+<body onload="checkstate()">
 
 <!-- menu-bar -->
 <div class="menu-bar">
@@ -68,7 +68,7 @@
 </div>
 <!-- menu-bar -->
 <h1>&nbsp;</h1>
-
+<div><input type="hidden" id="state" value="${StuReg }"></div>
 <!-- panel-custom -->
 <div class="panel-custom">
   <div class="panel-heading">
@@ -112,7 +112,7 @@
       </div>
       <!-- add button-->
       <div class="form-group " style="margin-left: 40px">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
+        <button title="addStu" type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
 										<span style="margin-right: 5px" class="" aria-hidden="true">
 											<i class="fa fa-user-plus">添加学生信息</i>
 											</span>
