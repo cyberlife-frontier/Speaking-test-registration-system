@@ -52,7 +52,7 @@ public class ExamInfoServlet extends HttpServlet {
 			String beginning = request.getParameter("beginning");
 			String deadline = request.getParameter("deadline");
 			this.ExamInfoService.ExamTime(beginning, deadline);
-			request.getRequestDispatcher("cet-index.jsp").forward(request, response);
+			response.sendRedirect("StuStatusInfo?method=fn");
 			break;
 		case "getTime":
 			ExamTime ExamTime = this.ExamInfoService.getTime();

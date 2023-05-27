@@ -62,15 +62,17 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 		Integer i =0;//Number of loop iterations
 		//Integer j=0;//CamStat pointer
 		Integer sum=0;//count the number of campus
-		List<CamStat> CamStatIni = new ArrayList<>();//initial
-		List<String> campuses = new ArrayList<>();//transfer
-		List<CamStat> CamStat = new ArrayList<>();//goal
+		List<CamStat> CamStatIni = new ArrayList<>();//initial array
+		//List<String> campuses = new ArrayList<>();transfer array
+		List<CamStat> CamStat = new ArrayList<>();//goal array
 		
 		CamStatIni = this.StuStatusInfoDao.CamStat();
 		count = CamStatIni.size();
 		
 		while(true) {
-		//choose university
+		//Reset the array with each large loop
+		List<String> campuses = new ArrayList<>();//transfer array
+		//choose one of universities
 			while(i<count) {
 				university = CamStatIni.get(i).getUniversity();
 				if(university != "null")
@@ -79,9 +81,10 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 			}
 			if(i == count)break;//all university selected once
 			i=0;//reset
-			while(i<count) {
-				String temp = CamStatIni.get(i).getUniversity();
-				String temp2 = CamStatIni.get(i).getCampus();
+			//choose all campuses in the university
+ 			while(i<count) {
+				String temp = CamStatIni.get(i).getUniversity();//Obtain university information
+				String temp2 = CamStatIni.get(i).getCampus();//Obtain campus information
 				if(temp.equals(university)) {
 					campuses.add(temp2);
 					CamStatIni.get(i).setUniversity("null");//Marks the selected item
@@ -90,8 +93,13 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 				i++;
 			}
 			i=0;//reset
-			//choose campus 
+			
+			//Total number of applicants in university
 			cam_count = campuses.size();
+			//add total number
+			CamStat.add(new CamStat(university,"",cam_count));
+			university = "";
+			//choose one of the campuses selected 
 			while(true) {
 				while(i<cam_count) {
 					campus = campuses.get(i);
@@ -101,7 +109,7 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 				}
 				if(i == cam_count)break;//all campus selected once
 				i=0;//reset
-
+				//statistics Number of campuses
 				while(i<cam_count) {
 					if(campus.equals(campuses.get(i))) {
 						campuses.set(i, "null");//Marks the selected item
@@ -111,7 +119,7 @@ public class StuStatusInfoServiceImpl implements  StuStatusInfoService{
 				}
 				i=0;//reset
 				CamStat.add(new CamStat(university,campus,sum));
-				university = "";
+				
 				sum=0;
 			}
 		i=0;//reset

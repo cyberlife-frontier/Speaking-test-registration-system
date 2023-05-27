@@ -22,6 +22,10 @@
 </head>
 <body onload="checkstate()">
 
+<div class="video-wrap">
+    <video class="video-wrap__video" poster="images/graduation travell2.jpg" src="videos/graduation travell2.mp4"  tabindex="-1" airplay="allow" x-webkit-airplay="true" playsinline="true" webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" autoplay muted playsinline loop></video>
+</div>
+
 <!-- menu-bar -->
 <div class="menu-bar">
   <h1 class="logo">大学生四六级口语考试报名系统<span>系统</span></h1>
@@ -78,7 +82,7 @@
   <!--search students info  -->
     <form  role="form" class="form-inline" action="StuBasicInfo?method=search" method="post" >
       <div class="form-group">
-        <label >条件：
+        <label style="color:white;">条件：
           <select name="key" class="form-control" id="key-change"  onchange="csschange()">
             <option value="stu_name">学生姓名</option>
             <option value="stu_gender">性别</option>
@@ -89,7 +93,7 @@
       </div>
 
       <div class="form-group">
-        <label >值：
+        <label style="color:white;">值：
           <input id="id-key" type="text" class="form-control" name="value" placeholder="关键字" maxlength="12" >
           <select id="gen-key" class="form-control" style="display:none;">
             <option value="男" >男</option>
@@ -383,18 +387,18 @@
         <table class="table table-bordered table-hover table-striped table-condensed" 
         style="line-height:50px;border:0;">
         <c:forEach items="${CamStat}" var="cs">
-        	<c:if test="${cs.university eq '哈尔滨工业大学' }">
-        	      <tr><th colspan="2">哈尔滨工业大学</th></tr>  
+        	<c:if test="${cs.university ne ''}">
+        	      <tr>
+        	      <th >${cs.university }</th>
+        	      <th >${cs.count }人</th>
+        	      </tr>  
            </c:if>
-           <c:if test="${cs.university eq '华东师范大学' }">
-        	      <tr><th colspan="2">华东师范大学</th></tr>  
-           </c:if>
-           <c:if test="${cs.university eq '太原理工大学' }">
-        	      <tr><th colspan="2">太原理工大学</th></tr>  
-           </c:if>
+           
            <tr>
+           <c:if test="${cs.campus ne ''}">
            	<td>${cs.campus }</td>
            	<td>${cs.count }人</td>
+           	</c:if>
            </tr>   
            
 		</c:forEach>
@@ -484,7 +488,7 @@
 
 <!--sum of students-->
 <div style="display:flex;justify-content:center;">
-  <p style="font-size:20px;">共有学生<i style=" color:blue;" >${stu_count}</i> 人</p>
+  <p style="font-size:20px;color:white;">共有学生<i style=" color:green;" >${stu_count}</i> 人</p>
   <button type="button" class="button-default" data-toggle="modal"
           data-target="#staExamInfo">统计</button>
 </div>
