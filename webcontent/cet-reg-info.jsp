@@ -18,6 +18,11 @@
 </head>
 
 <body>
+
+<div class="video-wrap">
+    <video class="video-wrap__video" poster="images/graduation travell2.jpg" src="videos/graduation travell2.mp4"  tabindex="-1" airplay="allow" x-webkit-airplay="true" playsinline="true" webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" autoplay muted playsinline loop></video>
+</div>
+
 <!-- menu-bar -->
 <div class="menu-bar">
   <h1 class="logo">大学生四六级口语考试报名系统<span>系统</span></h1>
@@ -74,7 +79,7 @@
   <!--search students info  -->
     <form  role="form" class="form-inline" action="ExamInfo?method=searchReg" method="post" >
       <div class="form-group">
-        <label >条件：
+        <label style="color:white;">条件：
           <select name="key" class="form-control" id="key-change"  onchange="csschange()">
             <option value="stu_ID_card" selected>证件号码</option>
             <option value="reg_subject">报考科目</option>
@@ -83,7 +88,7 @@
       </div>
 
       <div class="form-group" >
-        <label >值：
+        <label style="color:white;">值：
           <input id="id-key" type="text" class="form-control" name="value" placeholder="关键字" maxlength="18" >
           <select id="sub-key" class="form-control" style="display:none;">
             <option value="1" >英语四级口试</option>
@@ -217,7 +222,7 @@
 <h3>&nbsp;</h3>
 
 <!--sum of students registration-->
-<h3 style=" color：blue; text-align:center" >共有学生${reg_count}人</h3>
+<h3 style=" color:white; text-align:center" >共有学生<i style=" color:green;">${reg_count}</i>人</h3>
 
 <!--show students registration info-->	     
 <div class="container">
