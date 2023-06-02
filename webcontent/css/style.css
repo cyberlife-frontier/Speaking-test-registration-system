@@ -145,7 +145,16 @@ body {
   background-color: rgba(0,0,0,0.3);
 }
 
-
+dialog{
+	position: absolute;
+	color:#e63c3c;
+	left:auto;
+	height:30px;
+	width:200px;
+	border-radius: 10px;
+	border-width: 1px;
+	transition: opacity .3s,transform .4s,-webkit-transform .4s;
+}
 
 /*学生信息*/
 .container {

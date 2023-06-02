@@ -23,7 +23,7 @@
 <body onload="checkstate()">
 
 <div class="video-wrap">
-    <video class="video-wrap__video" poster="images/graduation travell2.jpg" src="videos/graduation travell2.mp4"  tabindex="-1" airplay="allow" x-webkit-airplay="true" playsinline="true" webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" autoplay muted playsinline loop></video>
+    <video class="video-wrap__video" poster="images/graduation travell2.png" src="videos/graduation travell2.mp4"  tabindex="-1" airplay="allow" x-webkit-airplay="true" playsinline="true" webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" autoplay muted playsinline loop></video>
 </div>
 
 <!-- menu-bar -->
@@ -326,6 +326,10 @@
 </form>
 <!--delete modal-->
 
+<dialog id ="DialogInfo" >
+  	<div>开始时间不可晚于截止时间</div>
+</dialog>
+
 <!--issue test time-->
 <form method="post" action="ExamInfo?method=time" class="form-horizontal" style="margin-top: 0px" role="form"
       id="issuetimedata" style="margin: 20px;">
@@ -339,6 +343,7 @@
           <h4 class="modal-title" id="issuetime">发布考试时间</h4>
         </div>
         <div class="modal-body">
+        
           <form class="form-horizontal" role="form">
 			
 			<!-- beginning -->
@@ -365,7 +370,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="submit" class="btn btn-primary">提交</button>
+          <button type="button" onclick="timeChange()" class="btn btn-primary">提交</button>
         </div>
       </div>
     </div>

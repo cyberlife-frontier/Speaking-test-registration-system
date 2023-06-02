@@ -106,23 +106,43 @@ $('#updateUserModal').on('show.bs.modal', function(event) {
 
     });
 
-    $('#IssueTimeModal').on('show.bs.modal', function(event) {
-            let temp = new Date();
-                let time = temp.toLocaleDateString();
+$('#IssueTimeModal').on('show.bs.modal', function(event) {
+		let temp = new Date();
+		let time = temp.toLocaleDateString();
 
-                $("#beginning").datetimepicker({
-                    format: 'YYYY-MM-DD HH:mm:ss',
-                    locale: moment.locale('zh-CN'),
-                    minDate: time,
-                });
+        $("#beginning").datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            locale: moment.locale('zh-CN'),
+            minDate: time,
+        });
 
-                $("#deadline").datetimepicker({
-                    format: 'YYYY-MM-DD HH:mm:ss',
-                    locale: moment.locale('zh-CN'),
-                    minDate: time,
-                });
+        $("#deadline").datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            locale: moment.locale('zh-CN'),
+            minDate: time,
+        });
 
     });
+
+function timeChange(){
+	var beginTime = new Date($("#beginning").val());
+    var endTime = new Date($("#deadline").val());
+    var DialogInfo = document.getElementById("DialogInfo");
+    //The start time is earlier than the end time
+	if(beginTime < endTime ){
+		//console.log(beginTime);
+		//console.log(endTime);
+		$("#issuetimedata").submit();
+	}else {
+		
+        DialogInfo.showModal();
+        setTimeout(function(){
+            DialogInfo.close();
+        },2000)
+    
+	}
+}
+
 
 $('#stuStatusInfo').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
